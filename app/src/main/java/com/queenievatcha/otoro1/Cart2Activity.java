@@ -6,6 +6,7 @@ package com.queenievatcha.otoro1;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -38,6 +39,8 @@ public class Cart2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart2);
         setTitle("ADDRESS");
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         buttCheckout = (Button) findViewById(R.id.buttComplete);
         cash = (RadioButton) findViewById(R.id.radioOnDelivery);
         paypal = (RadioButton) findViewById(R.id.radioPayPal);
