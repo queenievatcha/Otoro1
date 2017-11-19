@@ -10,7 +10,17 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Complete"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:text="Home Activity" />
+
+    <Button
+        android:id="@+id/buttCart"
+        android:layout_width="wrap_content"
+        android:onClick="goCart"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:text="Go to Cart" />
 </RelativeLayout>
