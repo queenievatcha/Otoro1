@@ -17,23 +17,29 @@
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MenuActivity"
-            android:parentActivityName=".HomeActivity" >
-        </activity>
-        <activity android:name=".CartActivity"
-            android:parentActivityName=".MenuActivity" >
-        </activity>
-        <activity android:name=".HistoryActivity"
-            android:parentActivityName=".HomeActivity" >
-        </activity>
-        <activity android:name=".CheckoutActivity"
-            android:parentActivityName=".HomeActivity" >
-        </activity><activity android:name=".Cart2Activity"
-            android:parentActivityName=".CartActivity" >
-        </activity>
+        <activity
+            android:name=".MenuActivity"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity
+            android:name=".CartActivity"
+            android:parentActivityName=".MenuActivity"></activity>
+        <activity
+            android:name=".HistoryActivity"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity
+            android:name=".CheckoutActivity"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity
+            android:name=".Cart2Activity"
+            android:parentActivityName=".CartActivity"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
