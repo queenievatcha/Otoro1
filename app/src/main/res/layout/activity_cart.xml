@@ -5,16 +5,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.queenievatcha.otoro1.CartActivity"
-    tools:layout_editor_absoluteY="25dp">
+    tools:layout_editor_absoluteY="81dp">
+
+    <ListView
+        android:id="@+id/menuList"
+        android:layout_width="395dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="1dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/subTotalView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:onClick="goNext"
+        android:layout_marginBottom="4dp"
         android:layout_marginEnd="16dp"
+        android:onClick="goNext"
         android:text="next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/subTotalView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Subtotal"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/vatView"
+        app:layout_constraintEnd_toEndOf="@+id/vatView"
+        app:layout_constraintStart_toEndOf="@+id/vatView" />
+
+    <TextView
+        android:id="@+id/vatView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="95dp"
+        android:layout_marginStart="16dp"
+        android:text="VAT"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/totalView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Total (VAT included)"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/vatView"
+        app:layout_constraintTop_toBottomOf="@+id/vatView" />
+
+    <TextView
+        android:id="@+id/subTotalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="69dp"
+        android:layout_marginTop="11dp"
+        android:text="100.00"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/menuList"
+        app:layout_constraintTop_toBottomOf="@+id/menuList" />
+
+    <TextView
+        android:id="@+id/vatText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="700"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/subTotalText"
+        app:layout_constraintTop_toBottomOf="@+id/subTotalText" />
+
+    <TextView
+        android:id="@+id/totalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="100"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/vatText"
+        app:layout_constraintTop_toBottomOf="@+id/vatText" />
+
 </android.support.constraint.ConstraintLayout>

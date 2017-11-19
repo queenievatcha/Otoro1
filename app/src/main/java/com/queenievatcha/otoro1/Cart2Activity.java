@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -22,43 +23,43 @@ import java.math.BigDecimal;
 
 public class Cart2Activity extends AppCompatActivity {
 
-    Button buttPayPal;
+    Button buttCheckout;
     //EditText thb;
     PayPalConfiguration payConfig;
     Intent service;
     String clientID = "AdpOU4oQtBnhzwOKXxUXLNRdREk_AnWACHU0fJbiQjgsp26JDYAE-3F27w1Cre8JSzLAFjEQNjNNBDP0";
     int paypalRequestCode = 999;
+    RadioButton cash, paypal;
+    CartActivity cart = new CartActivity();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart2);
-        buttPayPal = (Button) findViewById(R.id.buttPayPal);
+        setTitle("ADDRESS");
+        buttCheckout = (Button) findViewById(R.id.buttComplete);
+        cash = (RadioButton) findViewById(R.id.radioOnDelivery);
+        paypal = (RadioButton) findViewById(R.id.radioPayPal);
         payConfig = new PayPalConfiguration().environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).clientId(clientID); // envi_production for real money
         service = new Intent(this, PayPalService.class);
         service.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payConfig); // config above
         startService(service); // paypal service, listen to calls to paypal app
+
+
+        buttCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (paypal.isChecked()) {
+                    pay(v);
+                } else if (cash.isChecked()) {
+                    Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
+                    startActivity(in);
+                }
+
+            }
+        });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /**
@@ -66,7 +67,7 @@ public class Cart2Activity extends AppCompatActivity {
      */
     public void pay(View view) {
 
-        String amount = 199 + ""; //thb.getText() + "";
+        String amount = cart.getTotalPrice();
 
         PayPalPayment payment = new PayPalPayment(new BigDecimal(amount), "THB", "Pay for me m8 ty", PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(this, PaymentActivity.class);
@@ -82,16 +83,16 @@ public class Cart2Activity extends AppCompatActivity {
 
         if (requestCode == paypalRequestCode) {
 
-            if (resultCode == Activity.RESULT_OK){
+            if (resultCode == Activity.RESULT_OK) {
 
                 // confirm that the payment works
                 PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
 
-                if(confirm != null){
+                if (confirm != null) {
 
                     String state = confirm.getProofOfPayment().getState();
 
-                    if(state.equals("approved")) { // payment works
+                    if (state.equals("approved")) { // payment works
                         Toast.makeText(this, "Paid Successfully!!", Toast.LENGTH_LONG).show();
                         Intent in = new Intent(this, CheckoutActivity.class);
                         startActivity(in);
