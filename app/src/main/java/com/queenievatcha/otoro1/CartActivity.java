@@ -43,7 +43,7 @@ public class CartActivity extends AppCompatActivity {
 
     public void pay(View view) {
 
-        String amount = 199+""; //thb.getText()+"";
+        String amount = 199 + ""; //thb.getText()+"";
 
         PayPalPayment payment = new PayPalPayment(new BigDecimal(amount), "THB", "Pay for me m8 ty", PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(this, PaymentActivity.class);
