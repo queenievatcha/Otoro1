@@ -37,7 +37,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
 
         LatLng pattaya = new LatLng(12.934668, 100.8812342);
-        mMap.addMarker(new MarkerOptions().position(pattaya).title("Central Festival Pattaya").snippet("    3rd floor"));
+        mMap.addMarker(new MarkerOptions().position(pattaya).title("Central Festival Pattaya").snippet("   3rd floor"));
 
         LatLng samyan= new LatLng(13.7434877,100.5233661);
         mMap.addMarker(new MarkerOptions().position(samyan).title("SuanLuang Square").snippet("  Chula soi 6"));
