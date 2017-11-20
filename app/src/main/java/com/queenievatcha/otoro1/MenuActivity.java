@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
+//lul
 public class MenuActivity extends AppCompatActivity {
 
     @Override
