@@ -23,7 +23,7 @@ public class CartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
-        setTitle("Cart");
+        setTitle("Your Cart");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         subTotalText = (TextView) findViewById(R.id.subTotalText);
@@ -60,10 +60,9 @@ public class CartActivity extends AppCompatActivity {
         return 0.07 * price;
     }
 
-
     public void goNext(View v) {
-        Intent intent=new Intent(this,Cart2Activity.class);
-        intent.putExtra("totalPrice",getTotalPrice());
+        Intent intent = new Intent(this, Cart2Activity.class);
+        intent.putExtra("totalPrice", getTotalPrice());
         startActivity(intent);
     }
 

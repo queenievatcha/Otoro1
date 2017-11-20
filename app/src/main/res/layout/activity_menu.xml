@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.queenievatcha.otoro1.MenuActivity">
 
+
+
     <ListView
         android:id="@+id/ListView"
         android:layout_width="wrap_content"
