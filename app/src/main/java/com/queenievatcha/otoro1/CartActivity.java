@@ -1,25 +1,21 @@
 package com.queenievatcha.otoro1;
 
-
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 
 public class CartActivity extends AppCompatActivity {
 
     ListView menuList;
-    TextView subTotalText, vatText, totalText;
+    TextView vatText, totalText, subTotalText;
     double price;
 
 
@@ -28,14 +24,12 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         setTitle("Cart");
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         subTotalText = (TextView) findViewById(R.id.subTotalText);
         vatText = (TextView) findViewById(R.id.vatText);
         totalText = (TextView) findViewById(R.id.totalText);
-
         DecimalFormat df = new DecimalFormat("#.##");
-
 
         //Create List
         menuList = (ListView) findViewById(R.id.menuList);
@@ -46,12 +40,13 @@ public class CartActivity extends AppCompatActivity {
         ListAdapter adt = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
         menuList.setAdapter(adt);
 
+        // show price
+        subTotalText.setText("990");
 
         // Get Price
         price = Double.parseDouble(subTotalText.getText().toString());
         vatText.setText(df.format(getVAT()));
         totalText.setText(getTotalPrice());
-
 
 
     }
@@ -67,8 +62,9 @@ public class CartActivity extends AppCompatActivity {
 
 
     public void goNext(View v) {
-        Intent in = new Intent(CartActivity.this, Cart2Activity.class);
-        startActivity(in);
+        Intent intent=new Intent(this,Cart2Activity.class);
+        intent.putExtra("totalPrice",getTotalPrice());
+        startActivity(intent);
     }
 
 
