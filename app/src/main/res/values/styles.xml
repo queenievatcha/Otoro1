@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="OtoroTheme" parent="AppTheme" >
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/common_google_signin_btn_text_dark_pressed</item>
+    </style>
+
 </resources>
