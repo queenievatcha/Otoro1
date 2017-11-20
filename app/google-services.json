@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "986518879270",
+    "firebase_url": "https://otoro1-5a33e.firebaseio.com",
+    "project_id": "otoro1-5a33e",
+    "storage_bucket": "otoro1-5a33e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986518879270:android:6d69809b1040aef2",
+        "android_client_info": {
+          "package_name": "com.queenievatcha.otoro1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986518879270-9l1925cmt41i46ub53u82cq9r39mkhhb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.queenievatcha.otoro1",
+            "certificate_hash": "06751573c7c56569396c1cb657418955a58245d6"
+          }
+        },
+        {
+          "client_id": "986518879270-708gic5mekk91gm8nv96phv2v2hld8is.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXFRCUo2DK2-Otp7FLkZftTslhxTA10O0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986518879270-708gic5mekk91gm8nv96phv2v2hld8is.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
