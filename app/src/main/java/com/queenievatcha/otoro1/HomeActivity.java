@@ -28,11 +28,6 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(in);
     }
 
-    public void goHistory(View v) {
-        Intent in = new Intent(HomeActivity.this, HistoryActivity.class);
-        startActivity(in);
-    }
-
     public void goMenu(View v) {
         Intent in = new Intent(HomeActivity.this, MenuActivity.class);
         startActivity(in);
@@ -46,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     public void popUp (View v){
         AlertDialog.Builder dialog = new AlertDialog.Builder(HomeActivity.this);
         dialog.setTitle("Delivery Schedule");
-        dialog.setMessage("eflgsjopg[ikgs'epgj'rgj;ho");
+        dialog.setMessage("We ship your delicious meal 2 hours after the order is placed. The first delivery is at 11:00am every day.");
         dialog.show();
     }
 

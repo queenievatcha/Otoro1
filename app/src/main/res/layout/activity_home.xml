@@ -29,16 +29,6 @@
         android:theme="?attr/actionBarTheme"
         app:titleTextColor="#fff" />
 
-    <Button
-        android:id="@+id/buttHistory"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="7dp"
-        android:background="@drawable/clock"
-        android:onClick="goHistory" />
-
     <TextView
         android:id="@+id/toolbarText"
         android:layout_width="wrap_content"
@@ -49,34 +39,79 @@
         android:textColor="#fff"
         android:textSize="24sp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_menu"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_above="@+id/btn_map"
         android:layout_alignParentStart="true"
-        android:background="@drawable/tonkatsu"
         android:onClick="goMenu"
-        android:text="OTORO DELIVERY" />
+        android:scaleType="centerCrop"
+        android:text="OTORO DELIVERY"
+        app:srcCompat="@drawable/tonkatsu"
+        android:background="@null"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_map"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_alignEnd="@+id/btn_menu"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp"
         android:onClick="goMap"
-        android:text="OTORO NEAR YOU" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/daifuku"
+        android:background="@null"/>
 
-    <Button
-        android:id="@+id/btn_time"
+    <ImageButton
+        android:id="@+id/btn_schedule"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/btn_map"
+        android:layout_centerHorizontal="true"
         android:onClick="popUp"
-        android:text="DELIVERY SCHEDULES" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/tunasushi2"
+        android:background="@null"/>
+
+    <TextView
+        android:id="@+id/caption_btn_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btn_menu"
+        android:layout_alignStart="@+id/btn_menu"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:text="OTORO DELIVERY"
+        android:textColor="#fff"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/caption_btn_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btn_map"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btn_map"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:text="OTORO NEAR YOU"
+        android:textColor="#fff"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/caption_btn_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btn_schedule"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btn_schedule"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:text="DELIVERY SCHEDULE"
+        android:textColor="#fff"
+        android:textStyle="bold" />
 
 </RelativeLayout>

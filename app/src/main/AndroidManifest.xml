@@ -34,9 +34,6 @@
             android:name=".CartActivity"
             android:parentActivityName=".MenuActivity"></activity>
         <activity
-            android:name=".HistoryActivity"
-            android:parentActivityName=".HomeActivity"></activity>
-        <activity
             android:name=".CheckoutActivity"
             android:parentActivityName=".HomeActivity"></activity>
         <activity
