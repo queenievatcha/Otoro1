@@ -45,11 +45,11 @@
         android:layout_height="100dp"
         android:layout_above="@+id/btn_map"
         android:layout_alignParentStart="true"
+        android:background="@null"
         android:onClick="goMenu"
         android:scaleType="centerCrop"
         android:text="OTORO DELIVERY"
-        app:srcCompat="@drawable/tonkatsu"
-        android:background="@null"/>
+        app:srcCompat="@drawable/button_tonkatsu" />
 
     <ImageButton
         android:id="@+id/btn_map"
@@ -59,10 +59,10 @@
         android:layout_centerVertical="true"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp"
+        android:background="@null"
         android:onClick="goMap"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/daifuku"
-        android:background="@null"/>
+        app:srcCompat="@drawable/button_daifuku" />
 
     <ImageButton
         android:id="@+id/btn_schedule"
@@ -70,10 +70,10 @@
         android:layout_height="100dp"
         android:layout_below="@+id/btn_map"
         android:layout_centerHorizontal="true"
+        android:background="@null"
         android:onClick="popUp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/tunasushi2"
-        android:background="@null"/>
+        app:srcCompat="@drawable/button_tuna" />
 
     <TextView
         android:id="@+id/caption_btn_menu"
