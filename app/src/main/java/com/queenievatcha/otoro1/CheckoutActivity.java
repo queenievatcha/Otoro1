@@ -27,11 +27,10 @@ import butterknife.OnClick;
 public class CheckoutActivity extends AppCompatActivity {
 
     Button buttBack;
-
+    static String name, address, address1, address2;
+    ImageView ivReceipt;
     @BindView(R.id.btDraw)
     Button btDraw;
-
-    ImageView ivReceipt;
 
 
     @Override
@@ -39,9 +38,18 @@ public class CheckoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
         setTitle("ORDER COMPLETE");
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ButterKnife.bind(this);
         ivReceipt = findViewById(R.id.ivReceipt);
+        name = getIntent().getStringExtra("name");
+        address = getIntent().getStringExtra("address");
+
+        int address1S = address.indexOf(" ", address.indexOf(" ") + 1);
+        address1 = address.substring(0, address1S + 1);
+        String address15 = address.substring(address1S);
+        int address2S = address15.indexOf(" ", address15.indexOf(" ") + 1);
+        //int address3S = address1.indexOf(address2S, address1.indexOf(" ")+1);
+        address2 = address15.substring(1, address2S + 1);
 
         buttBack = (Button) findViewById(R.id.buttBack);
     }
@@ -49,20 +57,19 @@ public class CheckoutActivity extends AppCompatActivity {
     @OnClick(R.id.btDraw)
     public void drawReceipt(View view) {
         Bitmap barcode = BitmapFactory.decodeResource(this.getResources(), R.drawable.barcode);
-
         ReceiptBuilder receipt = new ReceiptBuilder(1200);
         receipt.setMargin(30, 20).
                 setAlign(Paint.Align.CENTER).
                 setColor(Color.BLACK).
                 setTextSize(60).
                 setTypeface(this, "fonts/RobotoMono-Regular.ttf").
-                addText("LakeFront Cafe").
+                addText("OTORO").
                 addText("1234 Main St.").
                 addText("Palo Alto, CA 94568").
                 addText("999-999-9999").
                 addBlankSpace(30).
                 setAlign(Paint.Align.LEFT).
-                addText("Terminal ID: 123456", false).
+                addText(name + "", false).
                 setAlign(Paint.Align.RIGHT).
                 addText("1234").
                 setAlign(Paint.Align.LEFT).
@@ -72,16 +79,16 @@ public class CheckoutActivity extends AppCompatActivity {
                 addText("SERVER #4").
                 setAlign(Paint.Align.LEFT).
                 addParagraph().
-                addText("CHASE VISA - INSERT").
-                addText("AID: A000000000011111").
-                addText("ACCT #: *********1111").
-                addParagraph().
+                addText(address1).
+                addText(address2).
+                //addText("ACCT #: *********1111").
+                        addParagraph().
                 setTypeface(this, "fonts/RobotoMono-Bold.ttf").
                 addText("CREDIT SALE").
                 addText("UID: 12345678", false).
-                setAlign(Paint.Align.RIGHT).
-                addText("REF #: 1234").
-                setTypeface(this, "fonts/RobotoMono-Regular.ttf").
+                //setAlign(Paint.Align.RIGHT).
+                //addText("REF #: 1234").
+                        setTypeface(this, "fonts/RobotoMono-Regular.ttf").
                 setAlign(Paint.Align.LEFT).
                 addText("BATCH #: 091", false).
                 setAlign(Paint.Align.RIGHT).
@@ -124,7 +131,7 @@ public class CheckoutActivity extends AppCompatActivity {
     }
 
 
-    public void goHome(View v){
+    public void goHome(View v) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(CheckoutActivity.this);
         dialog.setTitle("Thank you");
         dialog.setMessage("Bye bye").setPositiveButton("OK", new DialogInterface.OnClickListener() {

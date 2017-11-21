@@ -90,6 +90,8 @@ public class Cart2Activity extends AppCompatActivity {
                 // selected cash
                 if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && cash.isChecked()) {
                     Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
+                    in.putExtra("name", name.getText().toString());
+                    in.putExtra("address", address.getText()+"");
                     startActivity(in);
                 }
 
@@ -105,8 +107,7 @@ public class Cart2Activity extends AppCompatActivity {
     public void pay(View view) {
 
         //Get totalPrice from Cart
-        Bundle bundle = getIntent().getExtras();
-        String amount = bundle.getString("totalPrice");
+        String amount = getIntent().getStringExtra("totalPrice");
 
         PayPalPayment payment = new PayPalPayment(new BigDecimal(amount), "THB", "Otoro", PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(this, PaymentActivity.class);
@@ -136,19 +137,15 @@ public class Cart2Activity extends AppCompatActivity {
                         Intent in = new Intent(this, CheckoutActivity.class);
                         startActivity(in);
                         Toast.makeText(this, "Paid Successfully!!", Toast.LENGTH_LONG).show();
-                        //payText.setText("Payment Success!!");
                     } else {
                         Intent in = new Intent(this, Cart2Activity.class);
                         startActivity(in);
                         Toast.makeText(this, "Payment Failed!!", Toast.LENGTH_LONG).show();
-                        //payText.setText("Patment Failed!! ");
                     }
                 } else {
                     Intent in = new Intent(this, Cart2Activity.class);
                     startActivity(in);
                     Toast.makeText(this, "Confirmation Failed!! (null)", Toast.LENGTH_LONG).show();
-                    //payText.setText("Confirmation Failed!! (null) ");
-
                 }
             }
         }
