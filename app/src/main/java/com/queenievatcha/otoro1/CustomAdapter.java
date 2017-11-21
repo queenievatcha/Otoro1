@@ -11,26 +11,45 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomAdapter extends ArrayAdapter<String> {
+import java.util.ArrayList;
+
+public class CustomAdapter extends ArrayAdapter{
     private String[] food;
     private String[] description;
-    private Integer[] imgID;
+    private int[] imgID;
     private String[] butPlus;
     private String[] butMinus;
-    private Integer[] amount;
+    private int[] amount;
     private Activity context;
+    int pos;
+    ArrayList<String> foodAL = new ArrayList<String>();
+    ArrayList<Integer> imgIDAL = new ArrayList<Integer>();
+    ArrayList<Integer> amountAL = new ArrayList<Integer>();
+
+
 
     CustomAdapter(@NonNull Activity context, String[] food, String[] description
-            , Integer[] imgID, String[] butPlus, String[] butMinus, Integer[] amount) {
+            , int[] imgID, String[] butPlus, String[] butMinus, int[] amount) {
         super(context, R.layout.custom_row, food);
         this.context = context;
         this.food = food;
         this.description = description;
         this.imgID = imgID;
         this.butPlus = butPlus;
-        this.butMinus=butMinus;
-        this.amount=amount;
+        this.butMinus = butMinus;
+        this.amount = amount;
     }
+
+    CustomAdapter(@NonNull Activity context, String[] food, ArrayList imgID, String[] butPlus, String[] butMinus, ArrayList amount) {
+        super(context, R.layout.custom_row, food);
+        this.context = context;
+        this.food = food;
+        this.imgIDAL = imgID;
+        this.butPlus = butPlus;
+        this.butMinus = butMinus;
+        this.amountAL = amount;
+    }
+
 
     @NonNull
     @Override
@@ -61,35 +80,64 @@ public class CustomAdapter extends ArrayAdapter<String> {
         Button foodButtonPlus;
         Button foodButtonMinus;
         TextView amountDisp;
-        int count=0;
+        int count = 0;
 
         ViewHolder(View v) {
             foodName = v.findViewById(R.id.foodName);
-            description = v.findViewById(R.id.description);
+            description = v.findViewById(R.id.price);
             foodImage = v.findViewById(R.id.foodImage);
-            foodButtonPlus=v.findViewById(R.id.foodButtonPlus);
+            amountDisp = v.findViewById(R.id.amountDisp);
+            foodButtonPlus = v.findViewById(R.id.foodButtonPlus);
             foodButtonPlus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    count=count+1;
+                    count = count + 1;
+                    if ((foodName.getText() + "").equalsIgnoreCase("burger"))
+                        pos = 0;
+                    if ((foodName.getText() + "").equalsIgnoreCase("crab"))
+                        pos = 1;
+                    if ((foodName.getText() + "").equalsIgnoreCase("fish"))
+                        pos = 2;
+                    if ((foodName.getText() + "").equalsIgnoreCase("pizza"))
+                        pos = 3;
+                    if ((foodName.getText() + "").equalsIgnoreCase("shrimp"))
+                        pos = 4;
+                    MenuActivity.addAmount(pos);
+                    MenuActivity.setAllText();
                     amountDisp.setText(Integer.toString(count));
                     foodButtonMinus.setEnabled(true);
                 }
             });
 
-            foodButtonMinus=v.findViewById(R.id.foodButtonMinus);
+            foodButtonMinus = v.findViewById(R.id.foodButtonMinus);
             foodButtonMinus.setEnabled(false);
             foodButtonMinus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    count=count-1;
+                    count = count - 1;
+                    if ((foodName.getText() + "").equalsIgnoreCase("burger"))
+                        pos = 0;
+                    if ((foodName.getText() + "").equalsIgnoreCase("crab"))
+                        pos = 1;
+                    if ((foodName.getText() + "").equalsIgnoreCase("fish"))
+                        pos = 2;
+                    if ((foodName.getText() + "").equalsIgnoreCase("pizza"))
+                        pos = 3;
+                    if ((foodName.getText() + "").equalsIgnoreCase("shrimp"))
+                        pos = 4;
+                    MenuActivity.minusAmount(pos);
+                    MenuActivity.setAllText();
                     amountDisp.setText(Integer.toString(count));
-                    if (count==0){
+                    if (count == 0) {
                         foodButtonMinus.setEnabled(false);
                     }
                 }
             });
-            amountDisp=v.findViewById(R.id.amountDisp);
         }
+
+
+
     }
+
+
 }

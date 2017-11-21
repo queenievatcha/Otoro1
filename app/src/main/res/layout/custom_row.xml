@@ -13,11 +13,21 @@
             app:srcCompat="@drawable/eat" />
 
         <TextView
+            android:id="@+id/totalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/amountDisp"
+            android:layout_below="@+id/foodButtonPlus"
+            android:text="total Price"
+            android:textSize="16sp" />
+
+        <TextView
             android:id="@+id/foodName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="13dp"
             android:layout_toEndOf="@+id/foodImage"
             android:fontFamily="sans-serif"
             android:text="Food"
@@ -27,19 +37,20 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/foodName"
             android:layout_below="@+id/foodName"
-            android:text="Description" />
+            android:text="Description"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/foodButtonPlus"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignBottom="@+id/description"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
             android:text="p"
             android:textColor="@android:color/holo_orange_dark"
             android:textSize="12sp" />
@@ -48,7 +59,7 @@
             android:id="@+id/foodButtonMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignBottom="@+id/description"
+            android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/amountDisp"
             android:text="m"
             android:textColor="@android:color/holo_purple"
@@ -58,7 +69,7 @@
             android:id="@+id/amountDisp"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignBottom="@+id/description"
+            android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/foodButtonPlus"
             android:gravity="center"
             android:text="9"
