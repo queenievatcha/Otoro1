@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/foodImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/eat" />
+
+    <TextView
+        android:id="@+id/totalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/amountDisp"
+        android:layout_below="@+id/foodButtonPlus"
+        android:text="total Price"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/foodName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="24dp"
+        android:layout_toEndOf="@+id/foodImage"
+        android:fontFamily="sans-serif"
+        android:text="Food"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/foodButtonPlus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="p"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/foodButtonMinus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/totalPrice"
+        android:text="m"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/amountDisp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/foodButtonPlus"
+        android:gravity="center"
+        android:text="9"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
