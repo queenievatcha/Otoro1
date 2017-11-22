@@ -58,8 +58,6 @@ public class MenuActivity extends AppCompatActivity {
 
     public void goToCart(MenuItem menuItem) {
         Intent in = new Intent(MenuActivity.this, CartActivity.class);
-        //in.putExtra("butPlus",butPlus);
-        //in.putExtra("butMinus",butMinus);
         in.putExtra("list", amount);
         in.putExtra("imgID", imgID);
         in.putExtra("nameList", food);

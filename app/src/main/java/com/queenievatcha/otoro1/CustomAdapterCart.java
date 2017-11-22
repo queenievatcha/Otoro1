@@ -84,16 +84,18 @@ public class CustomAdapterCart extends ArrayAdapter{
                     if ((foodName.getText() + "").equalsIgnoreCase("shrimp"))
                         pos = 4;
                     MenuActivity.addAmount(pos);
+                    CartActivity.addAmount(pos);
                     amountDisp.setText(Integer.toString(count));
                     foodButtonMinus.setEnabled(true);
                 }
             });
 
             foodButtonMinus = v.findViewById(R.id.foodButtonMinus);
-            foodButtonMinus.setEnabled(false);
+            foodButtonMinus.setEnabled(true);
             foodButtonMinus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    count = amountAL.get(pos);
                     count = count - 1;
                     if ((foodName.getText() + "").equalsIgnoreCase("burger"))
                         pos = 0;
@@ -106,6 +108,7 @@ public class CustomAdapterCart extends ArrayAdapter{
                     if ((foodName.getText() + "").equalsIgnoreCase("shrimp"))
                         pos = 4;
                     MenuActivity.minusAmount(pos);
+                    CartActivity.minusAmount(pos);
                     amountDisp.setText(Integer.toString(count));
                     if (count == 0) {
                         foodButtonMinus.setEnabled(false);

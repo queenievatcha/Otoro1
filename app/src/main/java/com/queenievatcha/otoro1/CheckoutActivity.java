@@ -48,7 +48,6 @@ public class CheckoutActivity extends AppCompatActivity {
         address1 = address.substring(0, address1S + 1);
         String address15 = address.substring(address1S);
         int address2S = address15.indexOf(" ", address15.indexOf(" ") + 1);
-        //int address3S = address1.indexOf(address2S, address1.indexOf(" ")+1);
         address2 = address15.substring(1, address2S + 1);
 
         buttBack = (Button) findViewById(R.id.buttBack);

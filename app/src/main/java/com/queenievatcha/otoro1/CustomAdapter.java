@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends ArrayAdapter{
+public class CustomAdapter extends ArrayAdapter {
     private String[] food;
     private String[] description;
     private int[] imgID;
@@ -27,7 +27,6 @@ public class CustomAdapter extends ArrayAdapter{
     ArrayList<Integer> amountAL = new ArrayList<Integer>();
 
 
-
     CustomAdapter(@NonNull Activity context, String[] food, String[] description
             , int[] imgID, String[] butPlus, String[] butMinus, int[] amount) {
         super(context, R.layout.custom_row, food);
@@ -39,17 +38,6 @@ public class CustomAdapter extends ArrayAdapter{
         this.butMinus = butMinus;
         this.amount = amount;
     }
-
-    CustomAdapter(@NonNull Activity context, String[] food, ArrayList imgID, String[] butPlus, String[] butMinus, ArrayList amount) {
-        super(context, R.layout.custom_row, food);
-        this.context = context;
-        this.food = food;
-        this.imgIDAL = imgID;
-        this.butPlus = butPlus;
-        this.butMinus = butMinus;
-        this.amountAL = amount;
-    }
-
 
     @NonNull
     @Override
@@ -91,6 +79,7 @@ public class CustomAdapter extends ArrayAdapter{
             foodButtonPlus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    count = amount[pos];
                     count = count + 1;
                     if ((foodName.getText() + "").equalsIgnoreCase("burger"))
                         pos = 0;
@@ -114,6 +103,7 @@ public class CustomAdapter extends ArrayAdapter{
             foodButtonMinus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    count = amount[pos];
                     count = count - 1;
                     if ((foodName.getText() + "").equalsIgnoreCase("burger"))
                         pos = 0;
@@ -134,10 +124,5 @@ public class CustomAdapter extends ArrayAdapter{
                 }
             });
         }
-
-
-
     }
-
-
 }

@@ -23,10 +23,12 @@ public class HomeActivity extends AppCompatActivity {
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
+    /*
     public void goCart(View v) {
         Intent in = new Intent(HomeActivity.this, CartActivity.class);
         startActivity(in);
     }
+    */
 
     public void goMenu(View v) {
         Intent in = new Intent(HomeActivity.this, MenuActivity.class);
