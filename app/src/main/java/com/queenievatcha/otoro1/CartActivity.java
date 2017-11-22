@@ -16,7 +16,6 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-
 public class CartActivity extends AppCompatActivity {
 
     ListView menuList;
@@ -75,7 +74,6 @@ public class CartActivity extends AppCompatActivity {
         ListAdapter myAdapter = new CustomAdapterCart(CartActivity.this, foodListFinal, imgIDFinal, buttPlus, buttMinus, amountListFinal);
         menuList = (ListView) findViewById(R.id.menuList);
         menuList.setAdapter(myAdapter);
-
     }
 
     public String getTotalPrice() {
@@ -102,7 +100,6 @@ public class CartActivity extends AppCompatActivity {
         amountListFinal.set(position, newAmount);
     }
 
-
     public void addList(int amount, String foodName, int imgID) {
         amountListFinal.add(amount);
         foodListFinal.add(foodName);
@@ -118,5 +115,4 @@ public class CartActivity extends AppCompatActivity {
         buttPlus.remove("+");
         buttMinus.remove("-");
     }
-
 }

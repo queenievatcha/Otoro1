@@ -33,7 +33,6 @@ public class Cart2Activity extends AppCompatActivity {
     int paypalRequestCode = 999;
     RadioButton cash, paypal;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,15 +90,12 @@ public class Cart2Activity extends AppCompatActivity {
                 if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && cash.isChecked()) {
                     Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
                     in.putExtra("name", name.getText().toString());
-                    in.putExtra("address", address.getText()+"");
+                    in.putExtra("address", address.getText() + "");
                     startActivity(in);
                 }
-
             }
         });
-
     }
-
 
     /**
      * For Paying with PayPal
@@ -117,22 +113,18 @@ public class Cart2Activity extends AppCompatActivity {
         startActivityForResult(intent, paypalRequestCode);
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == paypalRequestCode) {
-
             if (resultCode == Activity.RESULT_OK) {
 
                 // confirm that the payment works
                 PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
 
                 if (confirm != null) {
-
                     String state = confirm.getProofOfPayment().getState();
-
                     if (state.equals("approved")) { // payment works
                         Intent in = new Intent(this, CheckoutActivity.class);
                         startActivity(in);

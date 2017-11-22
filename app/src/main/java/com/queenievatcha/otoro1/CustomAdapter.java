@@ -26,7 +26,6 @@ public class CustomAdapter extends ArrayAdapter {
     ArrayList<Integer> imgIDAL = new ArrayList<Integer>();
     ArrayList<Integer> amountAL = new ArrayList<Integer>();
 
-
     CustomAdapter(@NonNull Activity context, String[] food, String[] description
             , int[] imgID, String[] butPlus, String[] butMinus, int[] amount) {
         super(context, R.layout.custom_row, food);

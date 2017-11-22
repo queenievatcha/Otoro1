@@ -23,7 +23,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
 public class CheckoutActivity extends AppCompatActivity {
 
     Button buttBack;
@@ -31,7 +30,6 @@ public class CheckoutActivity extends AppCompatActivity {
     ImageView ivReceipt;
     @BindView(R.id.btDraw)
     Button btDraw;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,18 +115,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 addParagraph().
                 addImage(barcode);
         ivReceipt.setImageBitmap(receipt.build());
-
-        Geocoder coder = new Geocoder(this);
-        try {
-            List<Address> enderecos = coder.getFromLocation(-22.90827, -47.06501, 1);
-            enderecos.isEmpty();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
     }
-
 
     public void goHome(View v) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(CheckoutActivity.this);
@@ -140,7 +127,5 @@ public class CheckoutActivity extends AppCompatActivity {
             }
         });
         dialog.show();
-
     }
-
 }

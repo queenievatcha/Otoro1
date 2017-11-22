@@ -43,12 +43,12 @@ public class MenuActivity extends AppCompatActivity {
         setAllText();
     }
 
-    public static void setAllText(){
-        burgerText.setText("Burger: "+amount[0]);
-        crabText.setText("Crab: "+amount[1]);
-        fishText.setText("Fish: "+amount[2]);
-        pizzaText.setText("Pizza: "+amount[3]);
-        shrimpText.setText("Shrimp: "+amount[4]);
+    public static void setAllText() {
+        burgerText.setText("Burger: " + amount[0]);
+        crabText.setText("Crab: " + amount[1]);
+        fishText.setText("Fish: " + amount[2]);
+        pizzaText.setText("Pizza: " + amount[3]);
+        shrimpText.setText("Shrimp: " + amount[4]);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

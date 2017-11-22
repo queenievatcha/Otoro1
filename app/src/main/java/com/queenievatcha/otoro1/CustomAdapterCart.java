@@ -25,7 +25,6 @@ public class CustomAdapterCart extends ArrayAdapter{
     ArrayList<Integer> imgIDAL = new ArrayList<Integer>();
     ArrayList<Integer> amountAL = new ArrayList<Integer>();
 
-
     CustomAdapterCart(@NonNull Activity context, ArrayList<String> food, ArrayList<Integer> imgID, ArrayList<String> butPlus, ArrayList<String> butMinus, ArrayList<Integer> amount) {
         super(context, R.layout.custom_row2, food);
         this.context = context;
@@ -116,7 +115,5 @@ public class CustomAdapterCart extends ArrayAdapter{
                 }
             });
         }
-
     }
-
 }
