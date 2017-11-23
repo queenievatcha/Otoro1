@@ -26,7 +26,7 @@
         android:text="Food"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
     <TextView
@@ -39,7 +39,7 @@
         android:layout_toEndOf="@+id/buttonMinus"
         android:layout_toStartOf="@+id/buttonMinus"
         android:text="Description"
-        android:textSize="15sp" />
+        android:textSize="13sp" />
 
     <Button
         android:id="@+id/buttonPlus"
@@ -47,7 +47,7 @@
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginTop="10dp"
         android:text="p"
         android:textColor="@android:color/holo_orange_dark"
@@ -81,6 +81,7 @@
         android:id="@+id/textViewBahtSymbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewFoodPrice"
         android:layout_below="@+id/buttonMinus"
         android:layout_marginEnd="5dp"
         android:layout_toStartOf="@+id/textViewFoodPrice"
@@ -93,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/buttonPlus"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="40dp"
         android:text="0"
         android:textSize="16sp" />
 

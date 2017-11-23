@@ -88,11 +88,11 @@ public class Cart2Activity extends AppCompatActivity {
                 }
 
                     // selected paypal
-                if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && paypal.isChecked())
+                else if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && paypal.isChecked())
                     pay(v);
 
                 // selected cash
-                if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && cash.isChecked()) {
+                else if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && cash.isChecked()) {
                     Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
                     in.putExtra("name", name.getText().toString());
                     in.putExtra("address", address.getText() + "");
