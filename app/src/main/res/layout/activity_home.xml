@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.queenievatcha.otoro1.HomeActivity">
 
-    <Button
-        android:id="@+id/buttCart"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="7dp"
-        android:background="@drawable/shoppingcart" />
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -112,5 +102,16 @@
         android:text="DELIVERY SCHEDULE"
         android:textColor="#fff"
         android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/toolbarText"
+        android:layout_marginEnd="11dp"
+        android:background="@null"
+        android:onClick="goInfo"
+        app:srcCompat="@android:drawable/ic_menu_info_details" />
 
 </RelativeLayout>

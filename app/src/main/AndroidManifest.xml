@@ -29,19 +29,22 @@
         </activity>
         <activity
             android:name=".MenuActivity"
-            android:parentActivityName=".HomeActivity"></activity>
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".CartActivity"
-            android:parentActivityName=".MenuActivity"></activity>
+            android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".CheckoutActivity"
-            android:parentActivityName=".HomeActivity"></activity>
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".Cart2Activity"
-            android:parentActivityName=".CartActivity"></activity>
+            android:parentActivityName=".CartActivity" />
         <activity
             android:name=".MapActivity"
-            android:parentActivityName=".HomeActivity"></activity>
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".InfoActivity"
+            android:parentActivityName=".InfoActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

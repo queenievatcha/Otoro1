@@ -5,11 +5,11 @@
 
 
     <item
-        android:icon="@drawable/shoppingcart"
         android:id="@+id/cartIcon"
-        android:title="Cart"
+        android:icon="@drawable/shoppingcart"
         android:onClick="goToCart"
-        app:showAsAction="always"/>
+        android:title="Cart"
+        app:showAsAction="always" />
 
 
 </menu>
