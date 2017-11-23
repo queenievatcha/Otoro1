@@ -56,33 +56,38 @@ public class Cart2Activity extends AppCompatActivity {
 
                 // all are blank
                 if (name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
-                    Toast.makeText(Cart2Activity.this, "Enter your name!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Cart2Activity.this, "Please enter your name.", Toast.LENGTH_SHORT).show();
 
                 // only method selected
-                if (name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && (paypal.isChecked() || cash.isChecked()))
-                    Toast.makeText(Cart2Activity.this, "Enter your name!!", Toast.LENGTH_SHORT).show();
+                else if (name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && (paypal.isChecked() || cash.isChecked()))
+                    Toast.makeText(Cart2Activity.this, "Please enter your name.", Toast.LENGTH_SHORT).show();
 
                 // address entered
-                if (name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
-                    Toast.makeText(Cart2Activity.this, "Enter your name!!", Toast.LENGTH_SHORT).show();
+                else if (name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
+                    Toast.makeText(Cart2Activity.this, "Please enter your name.", Toast.LENGTH_SHORT).show();
 
                 // address entered & method selected
-                if (name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && (paypal.isChecked() || cash.isChecked()))
-                    Toast.makeText(Cart2Activity.this, "Enter your name!!", Toast.LENGTH_SHORT).show();
+                else if (name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && (paypal.isChecked() || cash.isChecked()))
+                    Toast.makeText(Cart2Activity.this, "Please enter your name.", Toast.LENGTH_SHORT).show();
 
                 // name entered
-                if (!name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
-                    Toast.makeText(Cart2Activity.this, "Enter your address!!", Toast.LENGTH_SHORT).show();
+                else  if (!name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
+                    Toast.makeText(Cart2Activity.this, "Please enter your address.", Toast.LENGTH_SHORT).show();
 
                 // name entered & method selected
-                if (!name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && (paypal.isChecked() || cash.isChecked()))
-                    Toast.makeText(Cart2Activity.this, "Enter your name!!", Toast.LENGTH_SHORT).show();
+                else if (!name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && (paypal.isChecked() || cash.isChecked()))
+                    Toast.makeText(Cart2Activity.this, "Please enter your name.", Toast.LENGTH_SHORT).show();
 
                 // payment method not selected
-                if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
+                else  if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
                     Toast.makeText(Cart2Activity.this, "Please Select Payment Method!!", Toast.LENGTH_SHORT).show();
+                
+                //address is just scrambled words example: dsfkjhgas
+                else if(!address.getText().toString().contains(" ")){
+                    Toast.makeText(Cart2Activity.this, "Address is invalid", Toast.LENGTH_SHORT).show();                    
+                }
 
-                // selected paypal
+                    // selected paypal
                 if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && paypal.isChecked())
                     pay(v);
 

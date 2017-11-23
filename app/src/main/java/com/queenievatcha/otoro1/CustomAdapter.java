@@ -13,20 +13,24 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static com.queenievatcha.otoro1.MenuActivity.priceForEach;
+
 public class CustomAdapter extends ArrayAdapter {
     private String[] food;
     private String[] description;
+    private int[] price;
     private int[] imgID;
     private String[] butPlus;
     private String[] butMinus;
     private int[] amount;
     private Activity context;
     int pos;
+
     ArrayList<String> foodAL = new ArrayList<String>();
     ArrayList<Integer> imgIDAL = new ArrayList<Integer>();
     ArrayList<Integer> amountAL = new ArrayList<Integer>();
 
-    CustomAdapter(@NonNull Activity context, String[] food, String[] description
+    CustomAdapter(@NonNull Activity context, String[] food, String[] description, int[] price
             , int[] imgID, String[] butPlus, String[] butMinus, int[] amount) {
         super(context, R.layout.custom_row, food);
         this.context = context;
@@ -57,6 +61,7 @@ public class CustomAdapter extends ArrayAdapter {
         viewHolder.foodButtonPlus.setText(butPlus[position]);
         viewHolder.foodButtonMinus.setText(butMinus[position]);
         viewHolder.amountDisp.setText(Integer.toString(amount[position]));
+        viewHolder.textViewFoodPrice.setText(Integer.toString(priceForEach[position]));
         return r;
     }
 
@@ -67,59 +72,90 @@ public class CustomAdapter extends ArrayAdapter {
         Button foodButtonPlus;
         Button foodButtonMinus;
         TextView amountDisp;
+        TextView textViewFoodPrice;
         int count = 0;
 
         ViewHolder(View v) {
-            foodName = v.findViewById(R.id.foodName);
-            description = v.findViewById(R.id.price);
-            foodImage = v.findViewById(R.id.foodImage);
-            amountDisp = v.findViewById(R.id.amountDisp);
-            foodButtonPlus = v.findViewById(R.id.foodButtonPlus);
+            foodName = v.findViewById(R.id.textViewFoodName);
+            description = v.findViewById(R.id.textViewDescription);
+            foodImage = v.findViewById(R.id.imageViewFood);
+            amountDisp = v.findViewById(R.id.textViewAmountDisp);
+            foodButtonPlus = v.findViewById(R.id.buttonPlus);
+            textViewFoodPrice = v.findViewById(R.id.textViewFoodPrice);
+
             foodButtonPlus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    count = amount[pos];
-                    count = count + 1;
-                    if ((foodName.getText() + "").equalsIgnoreCase("burger"))
+                    if ((foodName.getText().toString()).equalsIgnoreCase("burger")) {
                         pos = 0;
-                    if ((foodName.getText() + "").equalsIgnoreCase("crab"))
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("crab")) {
                         pos = 1;
-                    if ((foodName.getText() + "").equalsIgnoreCase("fish"))
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("fish")) {
                         pos = 2;
-                    if ((foodName.getText() + "").equalsIgnoreCase("pizza"))
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("pizza")) {
                         pos = 3;
-                    if ((foodName.getText() + "").equalsIgnoreCase("shrimp"))
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("shrimp")) {
                         pos = 4;
-                    MenuActivity.addAmount(pos);
-                    MenuActivity.setAllText();
+                    }
+
+                    count = amount[pos];
+                    count++;
                     amountDisp.setText(Integer.toString(count));
+
+                    MenuActivity.addAmount(pos);
+                    MenuActivity.addPrice(pos);
+                    MenuActivity.setAllText();
+
                     foodButtonMinus.setEnabled(true);
+                    //reset counting
+                    count = 0;
                 }
             });
 
-            foodButtonMinus = v.findViewById(R.id.foodButtonMinus);
-            foodButtonMinus.setEnabled(false);
+            foodButtonMinus = v.findViewById(R.id.buttonMinus);
+
+            //if user backs to home activity and comes back again
+            int totalTest=0;
+            for (int i = 0; i < amount.length; i++) {
+                totalTest+=amount[i];
+            }
+            if (totalTest<1) foodButtonMinus.setEnabled(false);
+
+            ///////
+
             foodButtonMinus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    count = amount[pos];
-                    count = count - 1;
-                    if ((foodName.getText() + "").equalsIgnoreCase("burger"))
+
+                    if ((foodName.getText().toString()).equalsIgnoreCase("burger")) {
                         pos = 0;
-                    if ((foodName.getText() + "").equalsIgnoreCase("crab"))
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("crab")) {
                         pos = 1;
-                    if ((foodName.getText() + "").equalsIgnoreCase("fish"))
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("fish")) {
                         pos = 2;
-                    if ((foodName.getText() + "").equalsIgnoreCase("pizza"))
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("pizza")) {
                         pos = 3;
-                    if ((foodName.getText() + "").equalsIgnoreCase("shrimp"))
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("shrimp")) {
                         pos = 4;
-                    MenuActivity.minusAmount(pos);
-                    MenuActivity.setAllText();
-                    amountDisp.setText(Integer.toString(count));
-                    if (count == 0) {
-                        foodButtonMinus.setEnabled(false);
                     }
+
+                    count = amount[pos];
+                    count--;
+
+                    //prevent skipping
+                    if (count < 1) {
+                        count = 0;
+                        amountDisp.setText("0");
+                        amount[pos]=0;
+                    }
+                    amountDisp.setText(Integer.toString(count));
+
+                    MenuActivity.minusAmount(pos);
+                    MenuActivity.minusPrice(pos);
+                    MenuActivity.setAllText();
+
+                    //reset counting
+                    count = 0;
                 }
             });
         }

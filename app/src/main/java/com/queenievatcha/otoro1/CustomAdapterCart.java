@@ -63,10 +63,10 @@ public class CustomAdapterCart extends ArrayAdapter{
         int count;
 
         ViewHolder(View v) {
-            foodName = v.findViewById(R.id.foodName);
-            foodImage = v.findViewById(R.id.foodImage);
-            amountDisp = v.findViewById(R.id.amountDisp);
-            foodButtonPlus = v.findViewById(R.id.foodButtonPlus);
+            foodName = v.findViewById(R.id.textViewFoodName);
+            foodImage = v.findViewById(R.id.imageViewFood);
+            amountDisp = v.findViewById(R.id.textViewAmountDisp);
+            foodButtonPlus = v.findViewById(R.id.buttonPlus);
             foodButtonPlus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -89,7 +89,7 @@ public class CustomAdapterCart extends ArrayAdapter{
                 }
             });
 
-            foodButtonMinus = v.findViewById(R.id.foodButtonMinus);
+            foodButtonMinus = v.findViewById(R.id.buttonMinus);
             foodButtonMinus.setEnabled(true);
             foodButtonMinus.setOnClickListener(new View.OnClickListener() {
                 @Override

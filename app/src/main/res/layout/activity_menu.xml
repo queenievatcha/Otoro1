@@ -1,63 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.queenievatcha.otoro1.MenuActivity"
     tools:layout_editor_absoluteY="81dp">
 
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+    </ListView>
 
-    <TextView
-        android:id="@+id/shrimpText"
-        android:layout_width="wrap_content"
+    <!--///////////////////////////////////////////////////-->
+    <!--Remove entire below section when not needed Anymore-->
+    <LinearLayout
+        android:id="@+id/forTestingLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="29dp"
-        android:text="Shrimp: 0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:orientation="vertical"
+        android:textAlignment="center">
 
-    <TextView
-        android:id="@+id/fishText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fish: 0"
-        app:layout_constraintBottom_toTopOf="@+id/shrimpText"
-        app:layout_constraintStart_toStartOf="@+id/shrimpText" />
 
-    <TextView
-        android:id="@+id/burgerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Burger: 0"
-        app:layout_constraintBottom_toTopOf="@+id/fishText"
-        app:layout_constraintStart_toStartOf="@+id/fishText" />
+        <TextView
+            android:id="@+id/testingMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="(Amount Tester)"
+            android:textAlignment="center"/>
 
-    <TextView
-        android:id="@+id/crabText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:text="Crab: 0"
-        app:layout_constraintBottom_toTopOf="@+id/burgerText"
-        app:layout_constraintStart_toStartOf="@+id/burgerText" />
+        <TextView
+            android:id="@+id/shrimpText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-    <TextView
-        android:id="@+id/pizzaText"
-        android:layout_width="wrap_content"
+            android:text="Shrimp: 0"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/fishText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Fish: 0"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/burgerText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Burger: 0"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/crabText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Crab: 0"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/pizzaText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pizza: 0"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textViewPriceTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total price: ฿0"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+    <!--Remove until here-->
+
+    <Button
+        android:id="@+id/buttonCart"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pizza: 0"
-        app:layout_constraintBottom_toTopOf="@+id/crabText"
-        app:layout_constraintStart_toStartOf="@+id/crabText" />
-</android.support.constraint.ConstraintLayout>
+        android:background="@color/colorAccent"
+        android:text="go to cart"
+        android:onClick="goToCart"
+        android:textColor="#fff" />
+
+
+</LinearLayout>

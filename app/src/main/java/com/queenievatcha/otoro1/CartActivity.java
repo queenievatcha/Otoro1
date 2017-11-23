@@ -61,7 +61,7 @@ public class CartActivity extends AppCompatActivity {
         vatText = (TextView) findViewById(R.id.vatText);
         totalText = (TextView) findViewById(R.id.totalText);
 
-        // show price
+        // show priceForEach
         subTotalText.setText("990");
 
         // Get Price

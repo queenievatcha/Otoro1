@@ -1,45 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.queenievatcha.otoro1.CheckoutActivity">
-
-    <Button
-        android:id="@+id/buttBack"
-        android:layout_width="182dp"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="17dp"
-        android:onClick="goHome"
-        android:text="done"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tvDraw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Draw Receipt!"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
 
     <ImageView
         android:id="@+id/ivReceipt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btDraw"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_above="@+id/buttBack"
-        android:layout_centerHorizontal="true"
-        android:onClick="drawReceipt"
-        android:text="Draw Receipt"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="35dp" />
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnSaveReceipt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Save Receipt"
+            tools:ignore="ButtonStyle"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="35dp" />
+
+        <Button
+            android:id="@+id/buttBack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="goHome"
+            android:layout_weight="1"
+            android:text="Done"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
+
+</LinearLayout>
