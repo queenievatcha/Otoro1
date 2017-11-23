@@ -18,14 +18,12 @@ import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
 
-    ListView menuList;
+    ListView listViewSummary;
     TextView vatText, totalText, subTotalText;
     double price;
     static ArrayList<Integer> amountListFinal = new ArrayList<Integer>();
     static ArrayList<String> foodListFinal = new ArrayList<String>();
     static ArrayList<Integer> imgIDFinal = new ArrayList<Integer>();
-    static ArrayList<String> buttPlus = new ArrayList<String>();
-    static ArrayList<String> buttMinus = new ArrayList<String>();
     int index;
 
     @Override
@@ -71,9 +69,9 @@ public class CartActivity extends AppCompatActivity {
         totalText.setText(getTotalPrice());
 
         //ListView
-        ListAdapter myAdapter = new CustomAdapterCart(CartActivity.this, foodListFinal, imgIDFinal, buttPlus, buttMinus, amountListFinal);
-        menuList = (ListView) findViewById(R.id.menuList);
-        menuList.setAdapter(myAdapter);
+        ListAdapter myAdapter = new CustomAdapterCart(CartActivity.this, foodListFinal, imgIDFinal,amountListFinal);
+        listViewSummary = (ListView) findViewById(R.id.listViewSummary);
+        listViewSummary.setAdapter(myAdapter);
     }
 
     public String getTotalPrice() {
@@ -95,24 +93,15 @@ public class CartActivity extends AppCompatActivity {
         amountListFinal.set(position, newAmount);
     }
 
-    public static void minusAmount(int position) {
-        int newAmount = (amountListFinal.get(position)) - 1;
-        amountListFinal.set(position, newAmount);
-    }
-
     public void addList(int amount, String foodName, int imgID) {
         amountListFinal.add(amount);
         foodListFinal.add(foodName);
         imgIDFinal.add(imgID);
-        buttPlus.add("+");
-        buttMinus.add("-");
     }
 
     public void removeList(int amount, String foodName, int imgID) {
         amountListFinal.remove(amount);
         foodListFinal.remove(foodName);
         imgIDFinal.remove(imgID);
-        buttPlus.remove("+");
-        buttMinus.remove("-");
     }
 }

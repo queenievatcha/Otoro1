@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/imageViewFood"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
@@ -19,60 +19,39 @@
         android:id="@+id/textViewFoodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_alignTop="@+id/buttonMinus"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="17dp"
         android:layout_toEndOf="@+id/imageViewFood"
         android:fontFamily="sans-serif"
         android:text="Food"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
 
-    <Button
-        android:id="@+id/buttonPlus"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="10dp"
-        android:text="p"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="12sp" />
-
-    <Button
-        android:id="@+id/buttonMinus"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:layout_toStartOf="@+id/textViewAmountDisp"
-        android:text="m"
-        android:textColor="@android:color/holo_purple"
-        android:textSize="12sp" />
-
     <TextView
         android:id="@+id/textViewAmountDisp"
-        android:layout_width="20dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_toLeftOf="@+id/buttonPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textViewFoodName"
+        android:layout_marginEnd="100dp"
         android:gravity="center"
-        android:text="9"
+        android:text="(2)"
         android:textAlignment="center"
         android:textColor="@android:color/holo_red_dark"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewBahtSymbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonMinus"
-        android:layout_marginEnd="5dp"
-        android:layout_toStartOf="@+id/textViewFoodPrice"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textViewFoodName"
+        android:layout_marginEnd="70dp"
         android:text="฿"
         android:textSize="16sp" />
 
@@ -81,8 +60,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/buttonPlus"
-        android:layout_marginEnd="20dp"
-        android:text="0"
-        android:textSize="16sp"  />
+        android:layout_alignTop="@+id/textViewFoodName"
+        android:layout_marginEnd="35dp"
+        android:text="250"
+        android:textSize="16sp" />
 </RelativeLayout>
