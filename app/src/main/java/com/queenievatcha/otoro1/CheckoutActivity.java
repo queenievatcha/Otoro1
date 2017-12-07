@@ -22,7 +22,6 @@ public class CheckoutActivity extends AppCompatActivity {
     String [] nameList;
     int [] priceForEach;
     String price;
-
     Button buttBack;
     static String name, address, address1, address2;
     ImageView ivReceipt;
@@ -40,7 +39,9 @@ public class CheckoutActivity extends AppCompatActivity {
         amount = getIntent().getIntArrayExtra("amount");
         nameList = getIntent().getStringArrayExtra("nameList");
         priceForEach = getIntent().getIntArrayExtra("priceForEach");
-        price = getIntent().getStringExtra("totalPrice"); // < total price
+        price = getIntent().getStringExtra("totalPrice");
+        name = getIntent().getStringExtra("name");
+        address = getIntent().getStringExtra("address");// < total price
 
 
         ButterKnife.bind(this);
@@ -48,15 +49,17 @@ public class CheckoutActivity extends AppCompatActivity {
         ivReceipt = findViewById(R.id.ivReceipt);
         buttBack = findViewById(R.id.buttBack);
 
-        name = getIntent().getStringExtra("name");
-        address = getIntent().getStringExtra("address");
+
+        // BELOW THIS IS MADNESS
+
+/*
+        // make address a multiple line
 
         int address1S = address.indexOf(" ", address.indexOf(" ") + 1);
         address1 = address.substring(0, address1S + 1);
         String address15 = address.substring(address1S);
         int address2S = address15.indexOf(" ", address15.indexOf(" ") + 1);
         address2 = address15.substring(1, address2S + 1);
-
 
         Bitmap barcode = BitmapFactory.decodeResource(this.getResources(), R.drawable.barcode);
         ReceiptBuilder receipt = new ReceiptBuilder(1200);
@@ -120,7 +123,10 @@ public class CheckoutActivity extends AppCompatActivity {
                 addParagraph().
                 addImage(barcode);
         ivReceipt.setImageBitmap(receipt.build());
+*/
     }
+
+/*
 
     //@OnClick(R.id.btDraw)
     public void drawReceipt(View view) {
@@ -188,6 +194,7 @@ public class CheckoutActivity extends AppCompatActivity {
         ivReceipt.setImageBitmap(receipt.build());
     }
 
+*/
     public void goHome(View v) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(CheckoutActivity.this);
         dialog.setTitle("Thank you");

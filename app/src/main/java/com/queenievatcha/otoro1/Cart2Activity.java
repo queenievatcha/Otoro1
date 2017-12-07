@@ -110,7 +110,11 @@ public class Cart2Activity extends AppCompatActivity {
                 else if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && cash.isChecked()) {
                     Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
                     in.putExtra("name", name.getText().toString());
-                    in.putExtra("address", address.getText() + "");
+                    in.putExtra("totalPrice", price);
+                    in.putExtra("amount", amount);
+                    in.putExtra("nameList", nameList);
+                    in.putExtra("priceForEach", priceForEach);
+                    in.putExtra("address", address.getText().toString());
                     startActivity(in);
                 }
             }
@@ -151,6 +155,8 @@ public class Cart2Activity extends AppCompatActivity {
                         in.putExtra("amount", amount);
                         in.putExtra("nameList", nameList);
                         in.putExtra("priceForEach", priceForEach);
+                        in.putExtra("name", name.getText()).toString();
+                        in.putExtra("address", address.getText().toString());
                         startActivity(in);
                         Toast.makeText(this, "Paid Successfully!!", Toast.LENGTH_LONG).show();
                     } else {
