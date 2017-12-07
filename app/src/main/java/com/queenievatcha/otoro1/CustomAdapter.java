@@ -104,23 +104,23 @@ public class CustomAdapter extends ArrayAdapter {
 
                     MenuActivity.addAmount(pos);
                     MenuActivity.addPrice(pos);
-                    MenuActivity.setAllText();
-
                     foodButtonMinus.setEnabled(true);
+
+                    //For Testing
+                    //MenuActivity.setAllText();
+
                     //reset counting
                     count = 0;
                 }
             });
 
             foodButtonMinus = v.findViewById(R.id.buttonMinus);
-
             //if user backs to home activity and comes back again
-            int totalTest=0;
+            int totalTest = 0;
             for (int i = 0; i < amount.length; i++) {
-                totalTest+=amount[i];
+                totalTest += amount[i];
             }
-            if (totalTest<1) foodButtonMinus.setEnabled(false);
-
+            if (totalTest < 1) foodButtonMinus.setEnabled(false);
             ///////
 
             foodButtonMinus.setOnClickListener(new View.OnClickListener() {
@@ -146,14 +146,14 @@ public class CustomAdapter extends ArrayAdapter {
                     if (count < 1) {
                         count = 0;
                         amountDisp.setText("0");
-                        amount[pos]=0;
+                        amount[pos] = 0;
                     }
                     amountDisp.setText(Integer.toString(count));
 
                     MenuActivity.minusAmount(pos);
                     MenuActivity.minusPrice(pos);
-                    MenuActivity.setAllText();
-
+                    //For Testing
+                    //MenuActivity.setAllText();
                     //reset counting
                     count = 0;
                 }

@@ -20,8 +20,10 @@ public class MenuActivity extends AppCompatActivity {
     static String[] butMinus = {"-", "-", "-", "-", "-"};
     static int[] amount = {0, 0, 0, 0, 0};
     static int[] totalPriceForEach = {0, 0, 0, 0, 0};
-    static TextView shrimpText, burgerText, fishText, crabText, pizzaText, textViewPriceTest;
+    static int totalPrice;
     static Button buttonCart;
+
+    //static TextView shrimpText, burgerText, fishText, crabText, pizzaText, textViewPriceTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +36,22 @@ public class MenuActivity extends AppCompatActivity {
         ListView myListView = (ListView) findViewById(R.id.listView);
         myListView.setAdapter(myAdapter);
 
+        buttonCart = findViewById(R.id.buttonCart);
+
+        /*
         shrimpText = (TextView) findViewById(R.id.shrimpText);
         fishText = (TextView) findViewById(R.id.fishText);
         burgerText = (TextView) findViewById(R.id.burgerText);
         pizzaText = (TextView) findViewById(R.id.pizzaText);
         crabText = (TextView) findViewById(R.id.crabText);
         textViewPriceTest = findViewById(R.id.textViewPriceTest);
-
-        buttonCart = findViewById(R.id.buttonCart);
-
         setAllText();
+
+        */
     }
+
+    /*
+    // For Checking...
 
     public static void setAllText() {
         burgerText.setText("Burger: " + amount[0]);
@@ -58,9 +65,11 @@ public class MenuActivity extends AppCompatActivity {
             totalItems += amount[i];
 
         }
+
         int totalValue = 0;
         for (int i = 0; i < totalPriceForEach.length; i++) {
             totalValue += totalPriceForEach[i];
+
         }
 
         if(totalItems<0) totalItems=0;
@@ -69,30 +78,38 @@ public class MenuActivity extends AppCompatActivity {
         textViewPriceTest.setText("฿"+totalValue);
         buttonCart.setText("GO TO CART (" + totalItems + " items, ฿"+totalValue+")");
     }
+    */
 
     public void goToCart(View v) {
         Intent in = new Intent(MenuActivity.this, CartActivity.class);
-        in.putExtra("list", amount);
+        in.putExtra("amount", amount);
         in.putExtra("imgID", imgID);
         in.putExtra("nameList", food);
+        in.putExtra("priceForEach", priceForEach);
+        in.putExtra("totalPrice", totalPrice);
         startActivity(in);
     }
 
     public static void addAmount(int position) {
         amount[position]++;
+        totalPrice += priceForEach[position];
     }
 
     public static void minusAmount(int position) {
         amount[position]--;
-        if(!(amount[position]>0)) amount[position]=0;
+        if (!(amount[position] > 0)) amount[position] = 0;
+        totalPrice -= priceForEach[position];
+
     }
 
     public static void addPrice(int position) {
         totalPriceForEach[position] += priceForEach[position];
-    };
-    public static void minusPrice(int position){
+    }
+
+
+    public static void minusPrice(int position) {
         totalPriceForEach[position] -= priceForEach[position];
-        if(totalPriceForEach[position]<0) totalPriceForEach[position]=0;
-    };
+        if (totalPriceForEach[position] < 0) totalPriceForEach[position] = 0;
+    }
 
 }

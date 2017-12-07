@@ -23,6 +23,7 @@
 
     <!--///////////////////////////////////////////////////-->
     <!--Remove entire below section when not needed Anymore-->
+    <!--
     <LinearLayout
         android:id="@+id/forTestingLayout"
         android:layout_width="match_parent"
@@ -83,6 +84,7 @@
             android:text="Total price: ฿0"
             android:textAlignment="center"/>
     </LinearLayout>
+    -->
 
     <!--Remove until here-->
 

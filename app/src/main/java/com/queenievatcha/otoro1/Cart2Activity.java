@@ -25,6 +25,13 @@ import java.math.BigDecimal;
 
 public class Cart2Activity extends AppCompatActivity {
 
+    //FOR PASSING DATA
+    int[] amount;
+    String [] nameList;
+    int [] imgID;
+    int [] priceForEach;
+    String price;
+
     Button buttCheckout;
     PayPalConfiguration payConfig;
     EditText name, address;
@@ -39,6 +46,14 @@ public class Cart2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_cart2);
         setTitle("ADDRESS");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        // JUST FOR PASSING DATA
+        amount = getIntent().getIntArrayExtra("amount");
+        nameList = getIntent().getStringArrayExtra("nameList");
+        imgID = getIntent().getIntArrayExtra("imgID");
+        priceForEach = getIntent().getIntArrayExtra("priceForEach");
+        price = getIntent().getStringExtra("totalPrice");
+
 
         buttCheckout = (Button) findViewById(R.id.buttComplete);
         cash = (RadioButton) findViewById(R.id.radioOnDelivery);
@@ -87,7 +102,9 @@ public class Cart2Activity extends AppCompatActivity {
                     Toast.makeText(Cart2Activity.this, "Address is invalid", Toast.LENGTH_SHORT).show();                    
                 }
 
-                    // selected paypal
+
+
+                // selected paypal
                 else if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && paypal.isChecked())
                     pay(v);
 
@@ -108,7 +125,7 @@ public class Cart2Activity extends AppCompatActivity {
     public void pay(View view) {
 
         //Get totalPrice from Cart
-        String amount = getIntent().getStringExtra("totalPrice");
+        String amount = price;
 
         PayPalPayment payment = new PayPalPayment(new BigDecimal(amount), "THB", "Otoro", PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(this, PaymentActivity.class);
@@ -132,6 +149,11 @@ public class Cart2Activity extends AppCompatActivity {
                     String state = confirm.getProofOfPayment().getState();
                     if (state.equals("approved")) { // payment works
                         Intent in = new Intent(this, CheckoutActivity.class);
+                        in.putExtra("totalPrice", price);
+                        in.putExtra("amount", amount);
+                        in.putExtra("imgID", imgID);
+                        in.putExtra("nameList", nameList);
+                        in.putExtra("priceForEach", priceForEach);
                         startActivity(in);
                         Toast.makeText(this, "Paid Successfully!!", Toast.LENGTH_LONG).show();
                     } else {

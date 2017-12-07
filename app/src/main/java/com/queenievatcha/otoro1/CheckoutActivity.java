@@ -7,23 +7,22 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.location.Address;
-import android.location.Geocoder;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
-import java.io.IOException;
-import java.util.List;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 
 public class CheckoutActivity extends AppCompatActivity {
+
+    int[] amount;
+    String [] nameList;
+    int [] imgID;
+    int [] priceForEach;
+    String price;
 
     Button buttBack;
     static String name, address, address1, address2;
@@ -35,6 +34,16 @@ public class CheckoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_checkout);
         setTitle("ORDER COMPLETE");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
+        // GET FOOD DATA
+        // save these data to online database
+        amount = getIntent().getIntArrayExtra("amount");
+        nameList = getIntent().getStringArrayExtra("nameList");
+        imgID = getIntent().getIntArrayExtra("imgID");
+        priceForEach = getIntent().getIntArrayExtra("priceForEach");
+        price = getIntent().getStringExtra("totalPrice"); // < total price
+
 
         ButterKnife.bind(this);
 
@@ -117,7 +126,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
     //@OnClick(R.id.btDraw)
     public void drawReceipt(View view) {
-/*        Bitmap barcode = BitmapFactory.decodeResource(this.getResources(), R.drawable.barcode);
+        Bitmap barcode = BitmapFactory.decodeResource(this.getResources(), R.drawable.barcode);
         ReceiptBuilder receipt = new ReceiptBuilder(1200);
         receipt.setMargin(30, 20).
                 setAlign(Paint.Align.CENTER).
@@ -178,7 +187,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 addText("APPROVED").
                 addParagraph().
                 addImage(barcode);
-        ivReceipt.setImageBitmap(receipt.build());*/
+        ivReceipt.setImageBitmap(receipt.build());
     }
 
     public void goHome(View v) {
