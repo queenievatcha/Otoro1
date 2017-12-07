@@ -93,7 +93,6 @@ public class CartActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Cart2Activity.class);
         intent.putExtra("totalPrice", getTotalPrice());
         intent.putExtra("amount", amountListFinal);
-        intent.putExtra("imgID", imgIDFinal);
         intent.putExtra("nameList", foodListFinal);
         intent.putExtra("priceForEach", eachPriceFinal);
         startActivity(intent);

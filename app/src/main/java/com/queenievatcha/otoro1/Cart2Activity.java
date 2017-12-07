@@ -28,7 +28,6 @@ public class Cart2Activity extends AppCompatActivity {
     //FOR PASSING DATA
     int[] amount;
     String [] nameList;
-    int [] imgID;
     int [] priceForEach;
     String price;
 
@@ -50,7 +49,6 @@ public class Cart2Activity extends AppCompatActivity {
         // JUST FOR PASSING DATA
         amount = getIntent().getIntArrayExtra("amount");
         nameList = getIntent().getStringArrayExtra("nameList");
-        imgID = getIntent().getIntArrayExtra("imgID");
         priceForEach = getIntent().getIntArrayExtra("priceForEach");
         price = getIntent().getStringExtra("totalPrice");
 
@@ -151,7 +149,6 @@ public class Cart2Activity extends AppCompatActivity {
                         Intent in = new Intent(this, CheckoutActivity.class);
                         in.putExtra("totalPrice", price);
                         in.putExtra("amount", amount);
-                        in.putExtra("imgID", imgID);
                         in.putExtra("nameList", nameList);
                         in.putExtra("priceForEach", priceForEach);
                         startActivity(in);

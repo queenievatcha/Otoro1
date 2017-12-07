@@ -20,7 +20,6 @@ public class CheckoutActivity extends AppCompatActivity {
 
     int[] amount;
     String [] nameList;
-    int [] imgID;
     int [] priceForEach;
     String price;
 
@@ -40,7 +39,6 @@ public class CheckoutActivity extends AppCompatActivity {
         // save these data to online database
         amount = getIntent().getIntArrayExtra("amount");
         nameList = getIntent().getStringArrayExtra("nameList");
-        imgID = getIntent().getIntArrayExtra("imgID");
         priceForEach = getIntent().getIntArrayExtra("priceForEach");
         price = getIntent().getStringExtra("totalPrice"); // < total price
 
