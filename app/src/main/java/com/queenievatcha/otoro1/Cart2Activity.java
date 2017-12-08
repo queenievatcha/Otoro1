@@ -172,4 +172,5 @@ public class Cart2Activity extends AppCompatActivity {
             }
         }
     }
+
 }
