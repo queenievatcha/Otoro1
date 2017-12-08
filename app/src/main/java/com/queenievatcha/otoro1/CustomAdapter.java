@@ -110,9 +110,6 @@ public class CustomAdapter extends ArrayAdapter {
                     MenuActivity.addPrice(pos);
                     foodButtonMinus.setEnabled(true);
 
-                    //For Testing
-                    //MenuActivity.setAllText();
-
                     //reset counting
                     count = 0;
                 }
@@ -125,7 +122,6 @@ public class CustomAdapter extends ArrayAdapter {
                 totalTest += amount[i];
             }
             if (totalTest < 1) foodButtonMinus.setEnabled(false);
-            ///////
 
             foodButtonMinus.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -161,10 +157,9 @@ public class CustomAdapter extends ArrayAdapter {
 
                     MenuActivity.minusAmount(pos);
                     MenuActivity.minusPrice(pos);
-                    //For Testing
-                    //MenuActivity.setAllText();
+
                     //reset counting
-                    //count = 0;
+                    count = 0;
                 }
             });
         }

@@ -13,16 +13,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import java.util.ArrayList;
+
 import butterknife.ButterKnife;
 
 
 public class CheckoutActivity extends AppCompatActivity {
 
-    int[] amount;
-    String [] nameList;
-    int [] priceForEach;
-    String price;
+    ArrayList<Integer> amount, priceForEach;
+    ArrayList<String> foodList;
     Button buttBack;
+    int price;
     static String name, address, address1, address2;
     ImageView ivReceipt;
 
@@ -36,16 +38,15 @@ public class CheckoutActivity extends AppCompatActivity {
 
         // GET FOOD DATA
         // save these data to online database
-        amount = getIntent().getIntArrayExtra("amount");
-        nameList = getIntent().getStringArrayExtra("nameList");
-        priceForEach = getIntent().getIntArrayExtra("priceForEach");
-        price = getIntent().getStringExtra("totalPrice");
-        name = getIntent().getStringExtra("name");
-        address = getIntent().getStringExtra("address");// < total price
+        name = getIntent().getStringExtra("name"); // customer name
+        address = getIntent().getStringExtra("address"); // customer address
+        amount = CartActivity.amountListFinal;
+        priceForEach = CartActivity.eachPriceFinal;
+        price = MenuActivity.totalPrice;
+        foodList = CartActivity.foodListFinal;
 
 
         ButterKnife.bind(this);
-
         ivReceipt = findViewById(R.id.ivReceipt);
         buttBack = findViewById(R.id.buttBack);
 

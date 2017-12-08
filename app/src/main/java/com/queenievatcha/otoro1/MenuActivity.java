@@ -32,7 +32,7 @@ public class MenuActivity extends AppCompatActivity {
     static int totalPrice;
     static Button buttonCart;
 
-    //static TextView shrimpText, burgerText, fishText, crabText, pizzaText, textViewPriceTest;
+    static TextView shrimpText, burgerText, fishText, crabText, pizzaText, textViewPriceTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,58 +44,18 @@ public class MenuActivity extends AppCompatActivity {
         ListAdapter myAdapter = new CustomAdapter(this, food, description, priceForEach, imgID, butPlus, butMinus, amount);
         ListView myListView = (ListView) findViewById(R.id.listView);
         myListView.setAdapter(myAdapter);
-
         buttonCart = findViewById(R.id.buttonCart);
 
-        /*
-        shrimpText = (TextView) findViewById(R.id.shrimpText);
-        fishText = (TextView) findViewById(R.id.fishText);
-        burgerText = (TextView) findViewById(R.id.burgerText);
-        pizzaText = (TextView) findViewById(R.id.pizzaText);
-        crabText = (TextView) findViewById(R.id.crabText);
-        textViewPriceTest = findViewById(R.id.textViewPriceTest);
-        setAllText();
-
-        */
     }
-
-    /*
-    // For Checking...
-
-    public static void setAllText() {
-        burgerText.setText("Burger: " + amount[0]);
-        crabText.setText("Crab: " + amount[1]);
-        fishText.setText("Fish: " + amount[2]);
-        pizzaText.setText("Pizza: " + amount[3]);
-        shrimpText.setText("Shrimp: " + amount[4]);
-
-        int totalItems = 0;
-        for (int i = 0; i < amount.length; i++) {
-            totalItems += amount[i];
-
-        }
-
-        int totalValue = 0;
-        for (int i = 0; i < totalPriceForEach.length; i++) {
-            totalValue += totalPriceForEach[i];
-
-        }
-
-        if(totalItems<0) totalItems=0;
-        if(totalValue<0) totalValue=0;
-
-        textViewPriceTest.setText("฿"+totalValue);
-        buttonCart.setText("GO TO CART (" + totalItems + " items, ฿"+totalValue+")");
-    }
-    */
 
     public void goToCart(View v) {
         Intent in = new Intent(MenuActivity.this, CartActivity.class);
+        /*
         in.putExtra("amount", amount);
         in.putExtra("imgID", imgID);
         in.putExtra("nameList", food);
         in.putExtra("priceForEach", priceForEach);
-        in.putExtra("totalPrice", totalPrice);
+        */
         startActivity(in);
     }
 

@@ -32,22 +32,21 @@ public class CartActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // create amount list
-        int[] amountList = getIntent().getIntArrayExtra("amount");
+        int[] amountList = MenuActivity.amount;
 
         //create food list
-        String[] foodList = getIntent().getStringArrayExtra("nameList");
+        String[] foodList = MenuActivity.food;
 
         //create image list
-        int[] imgID = getIntent().getIntArrayExtra("imgID");
+        int[] imgID = MenuActivity.imgID;
 
         //create price for each list
-        int[] eachPriceF = getIntent().getIntArrayExtra("priceForEach");
+        int[] eachPriceF = MenuActivity.priceForEach;
 
         amountListFinal.clear();
         foodListFinal.clear();
         eachPriceFinal.clear();
         foodListFinal.clear();
-        price = MenuActivity.totalPrice;
 
         // add components to array lists
         if (foodList != null) {
@@ -68,11 +67,8 @@ public class CartActivity extends AppCompatActivity {
         vatText = (TextView) findViewById(R.id.vatText);
         totalText = (TextView) findViewById(R.id.totalText);
 
-
-        // show priceForEach
-
+        // show price
         price = MenuActivity.totalPrice;
-        // Get Price
         subTotalText.setText(MenuActivity.totalPrice + "");
         DecimalFormat df = new DecimalFormat("#.##");
         vatText.setText(df.format(getVAT()));
@@ -121,4 +117,5 @@ public class CartActivity extends AppCompatActivity {
         eachPriceFinal.remove(eachPrice);
 
     }
+
 }

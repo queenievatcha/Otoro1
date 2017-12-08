@@ -110,10 +110,6 @@ public class Cart2Activity extends AppCompatActivity {
                 else if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && cash.isChecked()) {
                     Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
                     in.putExtra("name", name.getText().toString());
-                    in.putExtra("totalPrice", price);
-                    in.putExtra("amount", amount);
-                    in.putExtra("nameList", nameList);
-                    in.putExtra("priceForEach", priceForEach);
                     in.putExtra("address", address.getText().toString());
                     startActivity(in);
                 }
@@ -151,10 +147,6 @@ public class Cart2Activity extends AppCompatActivity {
                     String state = confirm.getProofOfPayment().getState();
                     if (state.equals("approved")) { // payment works
                         Intent in = new Intent(this, CheckoutActivity.class);
-                        in.putExtra("totalPrice", price);
-                        in.putExtra("amount", amount);
-                        in.putExtra("nameList", nameList);
-                        in.putExtra("priceForEach", priceForEach);
                         in.putExtra("name", name.getText()).toString();
                         in.putExtra("address", address.getText().toString());
                         startActivity(in);
