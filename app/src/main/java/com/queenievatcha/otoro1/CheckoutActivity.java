@@ -117,7 +117,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
 
                 setAlign(Paint.Align.RIGHT).
-                addText("PRIZE").
+                addText("PRICE").
 
                 //
 
