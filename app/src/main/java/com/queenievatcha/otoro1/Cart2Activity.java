@@ -30,6 +30,7 @@ public class Cart2Activity extends AppCompatActivity {
     String [] nameList;
     int [] priceForEach;
     String price;
+    static String payment;
 
     Button buttCheckout;
     PayPalConfiguration payConfig;
@@ -50,7 +51,7 @@ public class Cart2Activity extends AppCompatActivity {
         amount = getIntent().getIntArrayExtra("amount");
         nameList = getIntent().getStringArrayExtra("nameList");
         priceForEach = getIntent().getIntArrayExtra("priceForEach");
-        price = getIntent().getStringExtra("totalPrice");
+        price = CartActivity.realTotalPrice;
 
 
         buttCheckout = (Button) findViewById(R.id.buttComplete);
@@ -66,6 +67,12 @@ public class Cart2Activity extends AppCompatActivity {
         buttCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(paypal.isChecked()){
+                    payment = "Paypal";
+                }else if (cash.isChecked()){
+                    payment = "Cash";
+                }
 
                 // all are blank
                 if (name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())

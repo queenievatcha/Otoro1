@@ -22,6 +22,7 @@ public class CartActivity extends AppCompatActivity {
     static ArrayList<String> foodListFinal = new ArrayList<String>();
     static ArrayList<Integer> imgIDFinal = new ArrayList<Integer>();
     static ArrayList<Integer> eachPriceFinal = new ArrayList<Integer>();
+    static String vat, realTotalPrice;
     int index;
 
     @Override
@@ -74,6 +75,9 @@ public class CartActivity extends AppCompatActivity {
         vatText.setText(df.format(getVAT()));
         totalText.setText(getTotalPrice());
 
+        vat = new DecimalFormat("#.##").format(getVAT());
+        realTotalPrice = Double.toString(price + getVAT());
+
         //ListView
         ListAdapter myAdapter = new CustomAdapterCart(CartActivity.this, foodListFinal, imgIDFinal, amountListFinal, eachPriceFinal);
         listViewSummary = (ListView) findViewById(R.id.listViewSummary);
@@ -91,6 +95,7 @@ public class CartActivity extends AppCompatActivity {
     public void goNext(View v) {
         Intent intent = new Intent(this, Cart2Activity.class);
         intent.putExtra("totalPrice", getTotalPrice());
+        //intent.putExtra("vat",new DecimalFormat("#.##").format(getVAT()));
         intent.putExtra("amount", amountListFinal);
         intent.putExtra("nameList", foodListFinal);
         intent.putExtra("imgID", imgIDFinal);

@@ -23,6 +23,10 @@ public class ReceiptBuilder {
     private Typeface typeface;
     private Paint.Align align = Paint.Align.LEFT;
 
+    ArrayList<Integer> amount, priceForEach;
+    ArrayList<String> foodList;
+
+
     public ReceiptBuilder(int width) {
         this.width = width;
     }
@@ -110,6 +114,24 @@ public class ReceiptBuilder {
         }
         listItens.add(drawerText);
         return this;
+    }
+
+    public  ReceiptBuilder addMenu(){
+        amount = CartActivity.amountListFinal;
+        priceForEach = CartActivity.eachPriceFinal;
+        foodList = CartActivity.foodListFinal;
+
+        for(int i=0; i<amount.size(); i++){
+            setAlign(Paint.Align.LEFT).
+                    addParagraph().
+                    addText(foodList.get(i)+"   x "+amount.get(i), false).
+
+
+                    setAlign(Paint.Align.RIGHT).
+                    addText(String.valueOf(priceForEach.get(i)) + " ฿");
+        }
+
+        return  this;
     }
 
     public ReceiptBuilder addImage(Bitmap bitmap) {
