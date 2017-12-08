@@ -1,5 +1,6 @@
 package com.queenievatcha.otoro1;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;

@@ -14,11 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
 import static com.queenievatcha.otoro1.MenuActivity.priceForEach;
 
-public class CustomAdapterCart extends ArrayAdapter{
+public class CustomAdapterCart extends ArrayAdapter {
     private Activity context;
     int pos;
     ArrayList<String> foodAL = new ArrayList<String>();
