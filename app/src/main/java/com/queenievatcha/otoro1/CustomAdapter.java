@@ -18,17 +18,12 @@ import static com.queenievatcha.otoro1.MenuActivity.priceForEach;
 public class CustomAdapter extends ArrayAdapter {
     private String[] food;
     private String[] description;
-    private int[] price;
     private int[] imgID;
     private String[] butPlus;
     private String[] butMinus;
     private int[] amount;
     private Activity context;
     int pos;
-
-    ArrayList<String> foodAL = new ArrayList<String>();
-    ArrayList<Integer> imgIDAL = new ArrayList<Integer>();
-    ArrayList<Integer> amountAL = new ArrayList<Integer>();
 
     CustomAdapter(@NonNull Activity context, String[] food, String[] description, int[] price
             , int[] imgID, String[] butPlus, String[] butMinus, int[] amount) {

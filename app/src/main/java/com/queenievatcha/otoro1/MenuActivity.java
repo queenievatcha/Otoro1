@@ -1,6 +1,5 @@
 package com.queenievatcha.otoro1;
 
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -32,8 +30,6 @@ public class MenuActivity extends AppCompatActivity {
     static int totalPrice;
     static Button buttonCart;
 
-    static TextView shrimpText, burgerText, fishText, crabText, pizzaText, textViewPriceTest;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,12 +46,6 @@ public class MenuActivity extends AppCompatActivity {
 
     public void goToCart(View v) {
         Intent in = new Intent(MenuActivity.this, CartActivity.class);
-        /*
-        in.putExtra("amount", amount);
-        in.putExtra("imgID", imgID);
-        in.putExtra("nameList", food);
-        in.putExtra("priceForEach", priceForEach);
-        */
         startActivity(in);
     }
 
@@ -68,7 +58,7 @@ public class MenuActivity extends AppCompatActivity {
         amount[position]--;
         if (!(amount[position] > 0)) amount[position] = 0;
         totalPrice -= priceForEach[position];
-
+        if (totalPrice < 0) totalPrice = 0;
     }
 
     public static void addPrice(int position) {
