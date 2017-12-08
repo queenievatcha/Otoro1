@@ -147,6 +147,7 @@ public class CustomAdapter extends ArrayAdapter {
                         count = 0;
                         amountDisp.setText("0");
                         amount[pos] = 0;
+                        foodButtonMinus.setEnabled(false);
                     }
                     amountDisp.setText(Integer.toString(count));
 

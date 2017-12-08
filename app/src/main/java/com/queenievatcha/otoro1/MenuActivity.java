@@ -12,14 +12,19 @@ import android.widget.TextView;
 
 public class MenuActivity extends AppCompatActivity {
 
-    static String[] food = {"burger", "crab", "fish", "pizza", "shrimp"};
-    static String[] description = {"This is a burger", "This is a crab", "This is a fish", "This is a pizza", "This is a shrimp"};
-    static int[] priceForEach = {10, 20, 30, 40, 50};
-    static int[] imgID = {R.drawable.burger, R.drawable.crab, R.drawable.fish, R.drawable.pizza, R.drawable.shrimp};
-    static String[] butPlus = {"+", "+", "+", "+", "+"};
-    static String[] butMinus = {"-", "-", "-", "-", "-"};
-    static int[] amount = {0, 0, 0, 0, 0};
-    static int[] totalPriceForEach = {0, 0, 0, 0, 0};
+    static String[] food = {"Takoyaki", "Tuna Roll", "Tuna Sushi",
+            "Sushi Set", "Hamburg", "Beef Sukiyaki", "Shoyu Ramen"};
+    static String[] description = {"Ball-shaped snack made of selected meat and flour", "Tuna Roll served fresh",
+            "Fresh Tuna served with vinegared rice", "Special set included Otoro, Salmon, Tuna, Octopus, and Shrimp",
+            "Fried Selected Japanese ground beef", "Slow cooked meat served with vegetables in hot-pot style",
+            "Signature Japanese Ramen dish"};
+    static int[] priceForEach = {125, 145, 145, 170, 155, 160, 150};
+    static int[] imgID = {R.drawable.takoyaki, R.drawable.tunasushi, R.drawable.threepiecestuna, R.drawable.fivepiecesushi,
+            R.drawable.hamburg, R.drawable.sukiyakibeef, R.drawable.shoyuramen};
+    static String[] butPlus = {"+", "+", "+", "+", "+", "+", "+"};
+    static String[] butMinus = {"-", "-", "-", "-", "-", "-", "-"};
+    static int[] amount = {0, 0, 0, 0, 0, 0, 0};
+    static int[] totalPriceForEach = {0, 0, 0, 0, 0, 0, 0};
     static int totalPrice;
     static Button buttonCart;
 
