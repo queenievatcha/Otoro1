@@ -12,14 +12,17 @@ import android.widget.TextView;
 
 public class MenuActivity extends AppCompatActivity {
 
-    static String[] food = {"Takoyaki", "Tuna Roll", "Tuna Sushi",
-            "Sushi Set", "Hamburg", "Beef Sukiyaki", "Shoyu Ramen"};
-    static String[] description = {"Ball-shaped snack made of selected meat and flour", "Tuna Roll served fresh",
-            "Fresh Tuna served with vinegared rice", "Special set included Otoro, Salmon, Tuna, Octopus, and Shrimp",
-            "Fried Selected Japanese ground beef", "Slow cooked meat served with vegetables in hot-pot style",
-            "Signature Japanese Ramen dish"};
-    static int[] priceForEach = {125, 145, 145, 170, 155, 160, 150};
-    static int[] imgID = {R.drawable.takoyaki, R.drawable.tunasushi, R.drawable.threepiecestuna, R.drawable.fivepiecesushi,
+    static String[] food = {"Takoyaki", "Tonkutsu Curry", "3 Pieces Tuna",
+            "5 Pieces Sushi", "Hamburg Rice", "Sukiyaki", "Shoyu Ramen"};
+    static String[] description = {"Grill octopus, cabbage and batter shaped in ball, top with mayonnaise and fish flakes",
+            "Fried pork loins, veggie and Japanese curry serve on rice",
+            "Maguro, Chutoro and Otoro sushi, serve with soy sauce and fresh wasabi",
+            "2 Salmons, Ika, Ebi and Maguro, serve with soy sauce and fresh wasabi",
+            "Ground beef steak with demiglaze sauce serve on rice",
+            "Japanese hotpot serve with beef, veggies and noodles",
+            "Traditional ramen with shasu pork, bamboo shoot, seaweed, scallions and fresh egg"};
+    static int[] priceForEach = {125, 150, 165, 170, 155, 145, 140};
+    static int[] imgID = {R.drawable.takoyaki, R.drawable.tonkatsucurry, R.drawable.threepiecestuna, R.drawable.fivepiecesushi,
             R.drawable.hamburg, R.drawable.sukiyakibeef, R.drawable.shoyuramen};
     static String[] butPlus = {"+", "+", "+", "+", "+", "+", "+"};
     static String[] butMinus = {"-", "-", "-", "-", "-", "-", "-"};
