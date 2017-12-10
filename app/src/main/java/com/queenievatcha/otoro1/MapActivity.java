@@ -33,31 +33,31 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
 
         LatLng siamDis = new LatLng(13.7487581, 100.5237954);
-        mMap.addMarker(new MarkerOptions().position(siamDis).title("Siam Discovery").snippet("4th floor"));
+        mMap.addMarker(new MarkerOptions().position(siamDis).title("Siam Discovery").snippet("4th Floor"));
         LatLng pattaya = new LatLng(12.934668, 100.8812342);
-        mMap.addMarker(new MarkerOptions().position(pattaya).title("Central Festival Pattaya").snippet("3rd floor"));
+        mMap.addMarker(new MarkerOptions().position(pattaya).title("Central Festival Pattaya").snippet("3rd Floor"));
         LatLng samyan = new LatLng(13.7434877,100.5233661);
         mMap.addMarker(new MarkerOptions().position(samyan).title("SuanLuang Square").snippet("Chula soi 6"));
         LatLng silomcom = new LatLng(13.7238316,100.5124011);
         mMap.addMarker(new MarkerOptions().position(silomcom).title("Silom Complex"));
         LatLng ctw = new LatLng(13.7239138,100.5124011);
-        mMap.addMarker(new MarkerOptions().position(ctw).title("Central World").snippet("Chula soi 6"));
+        mMap.addMarker(new MarkerOptions().position(ctw).title("Central World").snippet("4th Floor"));
         LatLng emqua = new LatLng(13.7319755,100.5674966);
-        mMap.addMarker(new MarkerOptions().position(emqua).title("Emquatier").snippet("Chula soi 6"));
+        mMap.addMarker(new MarkerOptions().position(emqua).title("Emquartier").snippet("G Floor"));
         LatLng megab = new LatLng(13.6486135,100.6776184);
-        mMap.addMarker(new MarkerOptions().position(megab).title("Mega Bangna").snippet("Chula soi 6"));
+        mMap.addMarker(new MarkerOptions().position(megab).title("Mega Bangna").snippet("2nd Floor"));
         LatLng esplanade = new LatLng(13.7661459,100.5673483);
-        mMap.addMarker(new MarkerOptions().position(esplanade).title("Esplanade").snippet("Chula soi 6"));
+        mMap.addMarker(new MarkerOptions().position(esplanade).title("Esplanade").snippet("3rd Floor"));
         LatLng thonglorten = new LatLng(13.7314571,100.580487);
-        mMap.addMarker(new MarkerOptions().position(thonglorten).title("Thonglor Soi 10").snippet("Chula soi 6"));
+        mMap.addMarker(new MarkerOptions().position(thonglorten).title("Thonglor Soi 10"));
         LatLng centrallp = new LatLng(13.8164066,100.5586294);
-        mMap.addMarker(new MarkerOptions().position(centrallp).title("Central Ladprao").snippet("Chula soi 6"));
+        mMap.addMarker(new MarkerOptions().position(centrallp).title("Central Ladprao").snippet("4th Floor"));
         LatLng centralwg = new LatLng(13.876368,100.4088379);
-        mMap.addMarker(new MarkerOptions().position(centralwg).title("Central Westgate").snippet("Chula soi 6"));
+        mMap.addMarker(new MarkerOptions().position(centralwg).title("Central Westgate").snippet("2nd Floor"));
         LatLng centralev= new LatLng(13.8036168,100.6119115);
-        mMap.addMarker(new MarkerOptions().position(centralev).title("Central Festival Eastville").snippet("Chula soi 6"));
+        mMap.addMarker(new MarkerOptions().position(centralev).title("Central Festival Eastville").snippet("2nd Floor"));
         LatLng chaophraya = new LatLng(13.7741903,100.5008947);
-        mMap.addMarker(new MarkerOptions().position(chaophraya).title("Sri-Ayutthaya Road").snippet("Chula soi 6"));
+        mMap.addMarker(new MarkerOptions().position(chaophraya).title("Sri-Ayutthaya Road"));
 
         CameraPosition bangkok = CameraPosition.builder().target(new LatLng(13.7245599, 100.4926818)).zoom(9).build();
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(bangkok));
