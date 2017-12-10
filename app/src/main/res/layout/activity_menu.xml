@@ -21,78 +21,14 @@
 
     </ListView>
 
-    <!--///////////////////////////////////////////////////-->
-    <!--Remove entire below section when not needed Anymore-->
-    <LinearLayout
-        android:id="@+id/forTestingLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:textAlignment="center">
-
-
-        <TextView
-            android:id="@+id/testingMessage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="(Amount Tester)"
-            android:textAlignment="center"/>
-
-        <TextView
-            android:id="@+id/shrimpText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:text="Shrimp: 0"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/fishText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:text="Fish: 0"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/burgerText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Burger: 0"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/crabText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:text="Crab: 0"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/pizzaText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pizza: 0"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/textViewPriceTest"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Total price: ฿0"
-            android:textAlignment="center"/>
-    </LinearLayout>
-
-    <!--Remove until here-->
 
     <Button
         android:id="@+id/buttonCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        android:text="go to cart"
         android:onClick="goToCart"
+        android:text="go to cart"
         android:textColor="#fff" />
 
 

@@ -18,17 +18,12 @@ import static com.queenievatcha.otoro1.MenuActivity.priceForEach;
 public class CustomAdapter extends ArrayAdapter {
     private String[] food;
     private String[] description;
-    private int[] price;
     private int[] imgID;
     private String[] butPlus;
     private String[] butMinus;
     private int[] amount;
     private Activity context;
     int pos;
-
-    ArrayList<String> foodAL = new ArrayList<String>();
-    ArrayList<Integer> imgIDAL = new ArrayList<Integer>();
-    ArrayList<Integer> amountAL = new ArrayList<Integer>();
 
     CustomAdapter(@NonNull Activity context, String[] food, String[] description, int[] price
             , int[] imgID, String[] butPlus, String[] butMinus, int[] amount) {
@@ -86,16 +81,20 @@ public class CustomAdapter extends ArrayAdapter {
             foodButtonPlus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if ((foodName.getText().toString()).equalsIgnoreCase("burger")) {
+                    if ((foodName.getText().toString()).equalsIgnoreCase("Takoyaki")) {
                         pos = 0;
-                    } else if ((foodName.getText().toString()).equalsIgnoreCase("crab")) {
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Tonkutsu Curry")) {
                         pos = 1;
-                    } else if ((foodName.getText().toString()).equalsIgnoreCase("fish")) {
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("3 Pieces Tuna")) {
                         pos = 2;
-                    } else if ((foodName.getText().toString()).equalsIgnoreCase("pizza")) {
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("5 Pieces Sushi")) {
                         pos = 3;
-                    } else if ((foodName.getText().toString()).equalsIgnoreCase("shrimp")) {
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Hamburg Rice")) {
                         pos = 4;
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Sukiyaki")) {
+                        pos = 5;
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Shoyu Ramen")) {
+                        pos = 6;
                     }
 
                     count = amount[pos];
@@ -104,39 +103,39 @@ public class CustomAdapter extends ArrayAdapter {
 
                     MenuActivity.addAmount(pos);
                     MenuActivity.addPrice(pos);
-                    MenuActivity.setAllText();
-
                     foodButtonMinus.setEnabled(true);
+
                     //reset counting
                     count = 0;
                 }
             });
 
             foodButtonMinus = v.findViewById(R.id.buttonMinus);
-
             //if user backs to home activity and comes back again
-            int totalTest=0;
+            int totalTest = 0;
             for (int i = 0; i < amount.length; i++) {
-                totalTest+=amount[i];
+                totalTest += amount[i];
             }
-            if (totalTest<1) foodButtonMinus.setEnabled(false);
-
-            ///////
+            if (totalTest < 1) foodButtonMinus.setEnabled(false);
 
             foodButtonMinus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    if ((foodName.getText().toString()).equalsIgnoreCase("burger")) {
+                    if ((foodName.getText().toString()).equalsIgnoreCase("Takoyaki")) {
                         pos = 0;
-                    } else if ((foodName.getText().toString()).equalsIgnoreCase("crab")) {
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Tonkutsu Curry")) {
                         pos = 1;
-                    } else if ((foodName.getText().toString()).equalsIgnoreCase("fish")) {
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("3 Pieces Tuna")) {
                         pos = 2;
-                    } else if ((foodName.getText().toString()).equalsIgnoreCase("pizza")) {
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("5 Pieces Sushi")) {
                         pos = 3;
-                    } else if ((foodName.getText().toString()).equalsIgnoreCase("shrimp")) {
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Hamburg Rice")) {
                         pos = 4;
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Sukiyaki")) {
+                        pos = 5;
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Shoyu Ramen")) {
+                        pos = 6;
                     }
 
                     count = amount[pos];
@@ -146,13 +145,13 @@ public class CustomAdapter extends ArrayAdapter {
                     if (count < 1) {
                         count = 0;
                         amountDisp.setText("0");
-                        amount[pos]=0;
+                        amount[pos] = 0;
+                        foodButtonMinus.setEnabled(false);
                     }
                     amountDisp.setText(Integer.toString(count));
 
                     MenuActivity.minusAmount(pos);
                     MenuActivity.minusPrice(pos);
-                    MenuActivity.setAllText();
 
                     //reset counting
                     count = 0;

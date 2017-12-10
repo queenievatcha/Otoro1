@@ -25,6 +25,13 @@ import java.math.BigDecimal;
 
 public class Cart2Activity extends AppCompatActivity {
 
+    //FOR PASSING DATA
+    int[] amount;
+    String [] nameList;
+    int [] priceForEach;
+    String price;
+    static String payment;
+
     Button buttCheckout;
     PayPalConfiguration payConfig;
     EditText name, address;
@@ -40,6 +47,13 @@ public class Cart2Activity extends AppCompatActivity {
         setTitle("ADDRESS");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        // JUST FOR PASSING DATA
+        amount = getIntent().getIntArrayExtra("amount");
+        nameList = getIntent().getStringArrayExtra("nameList");
+        priceForEach = getIntent().getIntArrayExtra("priceForEach");
+        price = CartActivity.realTotalPrice;
+
+
         buttCheckout = (Button) findViewById(R.id.buttComplete);
         cash = (RadioButton) findViewById(R.id.radioOnDelivery);
         paypal = (RadioButton) findViewById(R.id.radioPayPal);
@@ -53,6 +67,12 @@ public class Cart2Activity extends AppCompatActivity {
         buttCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(paypal.isChecked()){
+                    payment = "Paypal";
+                }else if (cash.isChecked()){
+                    payment = "Cash";
+                }
 
                 // all are blank
                 if (name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
@@ -87,7 +107,9 @@ public class Cart2Activity extends AppCompatActivity {
                     Toast.makeText(Cart2Activity.this, "Address is invalid", Toast.LENGTH_SHORT).show();                    
                 }
 
-                    // selected paypal
+
+
+                // selected paypal
                 else if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && paypal.isChecked())
                     pay(v);
 
@@ -95,7 +117,7 @@ public class Cart2Activity extends AppCompatActivity {
                 else if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && cash.isChecked()) {
                     Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
                     in.putExtra("name", name.getText().toString());
-                    in.putExtra("address", address.getText() + "");
+                    in.putExtra("address", address.getText().toString());
                     startActivity(in);
                 }
             }
@@ -108,7 +130,7 @@ public class Cart2Activity extends AppCompatActivity {
     public void pay(View view) {
 
         //Get totalPrice from Cart
-        String amount = getIntent().getStringExtra("totalPrice");
+        String amount = price;
 
         PayPalPayment payment = new PayPalPayment(new BigDecimal(amount), "THB", "Otoro", PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(this, PaymentActivity.class);
@@ -132,6 +154,8 @@ public class Cart2Activity extends AppCompatActivity {
                     String state = confirm.getProofOfPayment().getState();
                     if (state.equals("approved")) { // payment works
                         Intent in = new Intent(this, CheckoutActivity.class);
+                        in.putExtra("name", name.getText()).toString();
+                        in.putExtra("address", address.getText().toString());
                         startActivity(in);
                         Toast.makeText(this, "Paid Successfully!!", Toast.LENGTH_LONG).show();
                     } else {
@@ -147,4 +171,5 @@ public class Cart2Activity extends AppCompatActivity {
             }
         }
     }
+
 }

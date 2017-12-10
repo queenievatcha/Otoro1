@@ -6,12 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -24,6 +21,8 @@ public class CartActivity extends AppCompatActivity {
     static ArrayList<Integer> amountListFinal = new ArrayList<Integer>();
     static ArrayList<String> foodListFinal = new ArrayList<String>();
     static ArrayList<Integer> imgIDFinal = new ArrayList<Integer>();
+    static ArrayList<Integer> eachPriceFinal = new ArrayList<Integer>();
+    static String vat, realTotalPrice;
     int index;
 
     @Override
@@ -34,23 +33,33 @@ public class CartActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // create amount list
-        int[] amountList = getIntent().getIntArrayExtra("list");
+        int[] amountList = MenuActivity.amount;
 
         //create food list
-        String[] foodList = getIntent().getStringArrayExtra("nameList");
+        String[] foodList = MenuActivity.food;
 
         //create image list
-        int[] imgID = getIntent().getIntArrayExtra("imgID");
+        int[] imgID = MenuActivity.imgID;
+
+        //create price for each list
+        int[] eachPriceF = MenuActivity.priceForEach;
+
+        amountListFinal.clear();
+        foodListFinal.clear();
+        eachPriceFinal.clear();
+        foodListFinal.clear();
 
         // add components to array lists
-        for (int i = 0; i < amountList.length; i++) {
-            if (amountList[i] != 0) {
-                if (!foodListFinal.contains(foodList[i]))
-                    addList(amountList[i], foodList[i], imgID[i]);
-            } else if (amountList[i] == 0 && !foodListFinal.isEmpty()) {
-                if (foodListFinal.contains(foodList[i])) {
-                    index = foodListFinal.indexOf(foodList[i]);
-                    removeList(amountList[index], foodList[index], imgID[index]);
+        if (foodList != null) {
+            for (int i = 0; i < amountList.length; i++) {
+                if (amountList[i] != 0) {
+                    if (!foodListFinal.contains(foodList[i]))
+                        addList(amountList[i], foodList[i], imgID[i], eachPriceF[i]);
+                } else if (amountList[i] == 0 && !foodListFinal.isEmpty()) {
+                    if (foodListFinal.contains(foodList[i])) {
+                        index = foodListFinal.indexOf(foodList[i]);
+                        removeList(amountList[index], foodList[index], imgID[index], eachPriceF[index]);
+                    }
                 }
             }
         }
@@ -59,17 +68,18 @@ public class CartActivity extends AppCompatActivity {
         vatText = (TextView) findViewById(R.id.vatText);
         totalText = (TextView) findViewById(R.id.totalText);
 
-        // show priceForEach
-        subTotalText.setText("990");
-
-        // Get Price
-        price = Double.parseDouble(subTotalText.getText().toString());
+        // show price
+        price = MenuActivity.totalPrice;
+        subTotalText.setText(MenuActivity.totalPrice + "");
         DecimalFormat df = new DecimalFormat("#.##");
         vatText.setText(df.format(getVAT()));
         totalText.setText(getTotalPrice());
 
+        vat = new DecimalFormat("#.##").format(getVAT());
+        realTotalPrice = Double.toString(price + getVAT());
+
         //ListView
-        ListAdapter myAdapter = new CustomAdapterCart(CartActivity.this, foodListFinal, imgIDFinal,amountListFinal);
+        ListAdapter myAdapter = new CustomAdapterCart(CartActivity.this, foodListFinal, imgIDFinal, amountListFinal, eachPriceFinal);
         listViewSummary = (ListView) findViewById(R.id.listViewSummary);
         listViewSummary.setAdapter(myAdapter);
     }
@@ -85,6 +95,11 @@ public class CartActivity extends AppCompatActivity {
     public void goNext(View v) {
         Intent intent = new Intent(this, Cart2Activity.class);
         intent.putExtra("totalPrice", getTotalPrice());
+        //intent.putExtra("vat",new DecimalFormat("#.##").format(getVAT()));
+        intent.putExtra("amount", amountListFinal);
+        intent.putExtra("nameList", foodListFinal);
+        intent.putExtra("imgID", imgIDFinal);
+        intent.putExtra("priceForEach", eachPriceFinal);
         startActivity(intent);
     }
 
@@ -93,15 +108,19 @@ public class CartActivity extends AppCompatActivity {
         amountListFinal.set(position, newAmount);
     }
 
-    public void addList(int amount, String foodName, int imgID) {
+    public void addList(int amount, String foodName, int imgID, int eachPrice) {
         amountListFinal.add(amount);
         foodListFinal.add(foodName);
         imgIDFinal.add(imgID);
+        eachPriceFinal.add(eachPrice * amount);
     }
 
-    public void removeList(int amount, String foodName, int imgID) {
+    public void removeList(int amount, String foodName, int imgID, int eachPrice) {
         amountListFinal.remove(amount);
         foodListFinal.remove(foodName);
         imgIDFinal.remove(imgID);
+        eachPriceFinal.remove(eachPrice);
+
     }
+
 }
