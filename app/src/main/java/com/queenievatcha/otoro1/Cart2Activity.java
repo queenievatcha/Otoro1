@@ -51,12 +51,6 @@ public class Cart2Activity extends AppCompatActivity {
         setTitle("BILLING ADDRESS");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            actionBar.setHomeButtonEnabled(false); // disable the button
-            actionBar.setDisplayHomeAsUpEnabled(false); // remove the left caret
-            actionBar.setDisplayShowHomeEnabled(false); // remove the icon
-        }
 
         //setting up a confirm dialog box
         final AlertDialog.Builder adb = new AlertDialog.Builder(this);

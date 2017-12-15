@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,38 +7,43 @@
     android:orientation="vertical"
     tools:context="com.queenievatcha.otoro1.CheckoutActivity">
 
-    <ImageView
-        android:id="@+id/ivReceipt"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnSaveReceipt"
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/ivReceipt"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="saveReceipt"
-            android:text="Save Receipt"
-            tools:ignore="ButtonStyle"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="35dp" />
+            android:layout_alignParentTop="true" />
 
-        <Button
-            android:id="@+id/buttBack"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:onClick="goHome"
-            android:layout_weight="1"
-            android:text="Done"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="ButtonStyle" />
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_below="@id/ivReceipt">
 
-</LinearLayout>
+            <Button
+                android:id="@+id/btnSaveReceipt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="saveReceipt"
+                android:text="Save Receipt"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/buttBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="goHome"
+                android:text="Done"
+                tools:ignore="ButtonStyle" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</ScrollView>

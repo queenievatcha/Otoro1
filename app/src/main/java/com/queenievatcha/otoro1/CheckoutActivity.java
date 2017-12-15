@@ -1,5 +1,6 @@
 package com.queenievatcha.otoro1;
 
+import android.app.ActionBar;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -50,6 +51,8 @@ public class CheckoutActivity extends AppCompatActivity {
         setTitle("ORDER COMPLETE");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setHomeButtonEnabled(false);
 
         // GET FOOD DATA
         // save these data to online database
@@ -90,7 +93,7 @@ public class CheckoutActivity extends AppCompatActivity {
         ReceiptBuilder receipt = new ReceiptBuilder(1200);
 
 
-        receipt.setMargin(30, 20).
+        receipt.setMargin(10, 20).
                 setAlign(Paint.Align.CENTER).
                 setColor(Color.BLACK).
                 setTextSize(60).
@@ -179,8 +182,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
     public void goHome(View v) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(CheckoutActivity.this);
-        dialog.setTitle("Thank you");
-        dialog.setMessage("Bye bye").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        dialog.setMessage("Thank you for purchasing").setPositiveButton("DONE", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Intent in = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(in);

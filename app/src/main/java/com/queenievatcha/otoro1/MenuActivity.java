@@ -33,7 +33,6 @@ public class MenuActivity extends AppCompatActivity {
     static int totalOrder;
     static int totalPrice;
     static Button buttonCart;
-    static String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
