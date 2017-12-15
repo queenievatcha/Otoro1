@@ -55,11 +55,12 @@ public class CartActivity extends AppCompatActivity {
                 if (amountList[i] != 0) {
                     if (!foodListFinal.contains(foodList[i]))
                         addList(amountList[i], foodList[i], imgID[i], eachPriceF[i]);
-                } else if (amountList[i] == 0 && !foodListFinal.isEmpty()) {
-                    if (foodListFinal.contains(foodList[i])) {
-                        index = foodListFinal.indexOf(foodList[i]);
-                        removeList(amountList[index], foodList[index], imgID[index], eachPriceF[index]);
-                    }
+                }
+                //else if (amountList[i] == 0 && !foodListFinal.isEmpty()) {
+                if (foodListFinal.contains(foodList[i])) {
+                    index = foodListFinal.indexOf(foodList[i]);
+                    removeList(amountList[index], foodList[index], imgID[index], eachPriceF[index]);
+                    //}
                 }
             }
         }
@@ -70,10 +71,10 @@ public class CartActivity extends AppCompatActivity {
 
         // show price
         price = MenuActivity.totalPrice;
-        subTotalText.setText("฿ "+MenuActivity.totalPrice + "");
+        subTotalText.setText("฿ " + MenuActivity.totalPrice + "");
         DecimalFormat df = new DecimalFormat("#.##");
-        vatText.setText("฿ "+df.format(getVAT()));
-        totalText.setText("฿ "+getTotalPrice());
+        vatText.setText("฿ " + df.format(getVAT()));
+        totalText.setText("฿ " + getTotalPrice());
 
         vat = new DecimalFormat("#.##").format(getVAT());
         realTotalPrice = Double.toString(price + getVAT());
