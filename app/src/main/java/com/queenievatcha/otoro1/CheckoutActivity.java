@@ -196,5 +196,6 @@ public class CheckoutActivity extends AppCompatActivity {
 
 
     public void saveReceipt(View v) {
+
     }
 }
