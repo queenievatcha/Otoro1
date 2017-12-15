@@ -81,7 +81,7 @@
         android:background="@color/colorAccent"
         android:onClick="pay"
         android:scaleType="centerCrop"
-        android:text="checkout"
+        android:text="confirm purchase"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
