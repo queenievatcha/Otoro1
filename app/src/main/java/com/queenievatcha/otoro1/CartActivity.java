@@ -70,10 +70,10 @@ public class CartActivity extends AppCompatActivity {
 
         // show price
         price = MenuActivity.totalPrice;
-        subTotalText.setText(MenuActivity.totalPrice + "");
+        subTotalText.setText("฿ "+MenuActivity.totalPrice + "");
         DecimalFormat df = new DecimalFormat("#.##");
-        vatText.setText(df.format(getVAT()));
-        totalText.setText(getTotalPrice());
+        vatText.setText("฿ "+df.format(getVAT()));
+        totalText.setText("฿ "+getTotalPrice());
 
         vat = new DecimalFormat("#.##").format(getVAT());
         realTotalPrice = Double.toString(price + getVAT());

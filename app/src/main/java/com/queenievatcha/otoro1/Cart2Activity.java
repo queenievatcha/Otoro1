@@ -5,9 +5,11 @@ package com.queenievatcha.otoro1;
  */
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -27,25 +29,29 @@ public class Cart2Activity extends AppCompatActivity {
 
     //FOR PASSING DATA
     int[] amount;
-    String [] nameList;
-    int [] priceForEach;
+    String[] nameList;
+    int[] priceForEach;
     String price;
     static String payment;
 
     Button buttCheckout;
     PayPalConfiguration payConfig;
-    EditText name, address;
+    EditText name, address, phone;
     Intent service;
     String clientID = "AdpOU4oQtBnhzwOKXxUXLNRdREk_AnWACHU0fJbiQjgsp26JDYAE-3F27w1Cre8JSzLAFjEQNjNNBDP0";
     int paypalRequestCode = 999;
     RadioButton cash, paypal;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart2);
-        setTitle("ADDRESS");
+        setTitle("BILLING ADDRESS");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //setting up a confirm dialog box
+        final AlertDialog.Builder adb = new AlertDialog.Builder(this);
 
         // JUST FOR PASSING DATA
         amount = getIntent().getIntArrayExtra("amount");
@@ -59,6 +65,7 @@ public class Cart2Activity extends AppCompatActivity {
         paypal = (RadioButton) findViewById(R.id.radioPayPal);
         name = (EditText) findViewById(R.id.editText);
         address = (EditText) findViewById(R.id.editText2);
+        phone = findViewById(R.id.phoneEditText);
         payConfig = new PayPalConfiguration().environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).clientId(clientID); // envi_production for real money
         service = new Intent(this, PayPalService.class);
         service.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payConfig);
@@ -68,9 +75,9 @@ public class Cart2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(paypal.isChecked()){
-                    payment = "Paypal";
-                }else if (cash.isChecked()){
+                if (paypal.isChecked()) {
+                    payment = "PayPal";
+                } else if (cash.isChecked()) {
                     payment = "Cash";
                 }
 
@@ -78,38 +85,64 @@ public class Cart2Activity extends AppCompatActivity {
                 if (name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
                     Toast.makeText(Cart2Activity.this, "Please enter your name.", Toast.LENGTH_SHORT).show();
 
-                // only method selected
+                    // only method selected
                 else if (name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && (paypal.isChecked() || cash.isChecked()))
                     Toast.makeText(Cart2Activity.this, "Please enter your name.", Toast.LENGTH_SHORT).show();
 
-                // address entered
+                    // address entered
                 else if (name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
                     Toast.makeText(Cart2Activity.this, "Please enter your name.", Toast.LENGTH_SHORT).show();
 
-                // address entered & method selected
+                    // address entered & method selected
                 else if (name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && (paypal.isChecked() || cash.isChecked()))
                     Toast.makeText(Cart2Activity.this, "Please enter your name.", Toast.LENGTH_SHORT).show();
 
-                // name entered
-                else  if (!name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
+                    // name entered
+                else if (!name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
                     Toast.makeText(Cart2Activity.this, "Please enter your address.", Toast.LENGTH_SHORT).show();
 
-                // name entered & method selected
+                    // name entered & method selected
                 else if (!name.getText().toString().trim().equals("") && address.getText().toString().trim().equals("") && (paypal.isChecked() || cash.isChecked()))
                     Toast.makeText(Cart2Activity.this, "Please enter your name.", Toast.LENGTH_SHORT).show();
 
-                // payment method not selected
-                else  if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
+                    // payment method not selected
+                else if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && !paypal.isChecked() && !cash.isChecked())
                     Toast.makeText(Cart2Activity.this, "Please Select Payment Method!!", Toast.LENGTH_SHORT).show();
-                
-                //address is just scrambled words example: dsfkjhgas
-                else if(!address.getText().toString().contains(" ")){
-                    Toast.makeText(Cart2Activity.this, "Address is invalid", Toast.LENGTH_SHORT).show();                    
+
+                    //address is just scrambled words example: dsfkjhgas
+                else if (!address.getText().toString().contains(" ")) {
+                    Toast.makeText(Cart2Activity.this, "Address is invalid", Toast.LENGTH_SHORT).show();
+                }
+
+                //phone number invalid
+                else if (!phone.getText().toString().contains("0") || phone.getText().toString().isEmpty() || (phone.getText().toString().length() != 10)) {
+                    Toast.makeText(Cart2Activity.this, "Phone number is invalid", Toast.LENGTH_SHORT).show();
                 }
 
 
-
                 // selected paypal
+                else if (paypal.isChecked())
+                    pay(v);
+
+                    // selected cash
+                else if (cash.isChecked()) {
+
+                    //adb.setTitle("Confirm Order?");
+                    adb.setMessage("Confirm Your Order?");
+                    adb.setNegativeButton("Cancel", null);
+                    adb.setPositiveButton("Yes", new AlertDialog.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int arg1) {
+                            Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
+                            in.putExtra("name", name.getText().toString());
+                            in.putExtra("address", address.getText().toString());
+                            in.putExtra("phone", phone.getText().toString());
+                            startActivity(in);
+                        }
+                    });
+                    adb.show();
+                }
+
+                /*// selected paypal
                 else if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && paypal.isChecked())
                     pay(v);
 
@@ -119,7 +152,7 @@ public class Cart2Activity extends AppCompatActivity {
                     in.putExtra("name", name.getText().toString());
                     in.putExtra("address", address.getText().toString());
                     startActivity(in);
-                }
+                }*/
             }
         });
     }
