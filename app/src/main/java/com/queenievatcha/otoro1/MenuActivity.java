@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.Arrays;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -27,8 +30,10 @@ public class MenuActivity extends AppCompatActivity {
     static String[] butMinus = {"-", "-", "-", "-", "-", "-", "-"};
     static int[] amount = {0, 0, 0, 0, 0, 0, 0};
     static int[] totalPriceForEach = {0, 0, 0, 0, 0, 0, 0};
+    static int totalOrder;
     static int totalPrice;
     static Button buttonCart;
+    static String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +42,7 @@ public class MenuActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         setTitle("Menu");
-        ListAdapter myAdapter = new CustomAdapter(this, food, description, priceForEach, imgID, butPlus, butMinus, amount);
+        ListAdapter myAdapter = new CustomAdapter(this, food, description, imgID, butPlus, butMinus, amount);
         ListView myListView = findViewById(R.id.listView);
         myListView.setAdapter(myAdapter);
         buttonCart = findViewById(R.id.buttonCart);
@@ -45,18 +50,27 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void goToCart(View v) {
-        Intent in = new Intent(MenuActivity.this, CartActivity.class);
-        startActivity(in);
+        totalOrder=0;
+        for (int i = 0; i < amount.length; i++) {
+            totalOrder += amount[i];
+        }
+        if (totalOrder != 0) {
+            Intent in = new Intent(MenuActivity.this, CartActivity.class);
+            startActivity(in);
+        } else {
+            Toast.makeText(this, "Please select your menu.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public static void addAmount(int position) {
         amount[position]++;
         totalPrice += priceForEach[position];
+
     }
 
     public static void minusAmount(int position) {
         amount[position]--;
-        if (!(amount[position] > 0)) amount[position] = 0;
+        if (amount[position] < 1) amount[position] = 0;
         totalPrice -= priceForEach[position];
         if (totalPrice < 0) totalPrice = 0;
     }
