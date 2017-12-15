@@ -1,5 +1,6 @@
 package com.queenievatcha.otoro1;
 
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -7,13 +8,24 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,6 +40,8 @@ public class CheckoutActivity extends AppCompatActivity {
     Button buttBack;
     static String name, price, address, address1, address2;
     ImageView ivReceipt;
+    String imagePath;
+    Uri URI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,5 +184,17 @@ public class CheckoutActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(CheckoutActivity.this, HomeActivity.class));
+        finish();
+    }
+
+
+    public void saveReceipt(View v) {
     }
 }

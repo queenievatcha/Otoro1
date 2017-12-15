@@ -154,6 +154,7 @@ public class Cart2Activity extends AppCompatActivity {
                     String state = confirm.getProofOfPayment().getState();
                     if (state.equals("approved")) { // payment works
                         Intent in = new Intent(this, CheckoutActivity.class);
+                        //noinspection ResultOfMethodCallIgnored
                         in.putExtra("name", name.getText()).toString();
                         in.putExtra("address", address.getText().toString());
                         startActivity(in);
