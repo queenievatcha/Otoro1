@@ -44,7 +44,7 @@ public class Cart2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart2);
-        setTitle("ADDRESS");
+        setTitle("BILLING ADDRESS");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // JUST FOR PASSING DATA
