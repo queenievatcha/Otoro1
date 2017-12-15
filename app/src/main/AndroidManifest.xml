@@ -35,7 +35,7 @@
             android:parentActivityName=".MenuActivity" />
         <activity
             android:name=".CheckoutActivity"
-            android:parentActivityName=".Cart2Activity" />
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".Cart2Activity"
             android:parentActivityName=".CartActivity" />
