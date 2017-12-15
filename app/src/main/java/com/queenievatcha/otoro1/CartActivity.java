@@ -56,12 +56,12 @@ public class CartActivity extends AppCompatActivity {
                     if (!foodListFinal.contains(foodList[i]))
                         addList(amountList[i], foodList[i], imgID[i], eachPriceF[i]);
                 }
-                //else if (amountList[i] == 0 && !foodListFinal.isEmpty()) {
+                /*else if (amountList[i] == 0 && !foodListFinal.isEmpty()) {
                 if (foodListFinal.contains(foodList[i])) {
                     index = foodListFinal.indexOf(foodList[i]);
                     removeList(amountList[index], foodList[index], imgID[index], eachPriceF[index]);
-                    //}
-                }
+                    }
+                } */
             }
         }
 
