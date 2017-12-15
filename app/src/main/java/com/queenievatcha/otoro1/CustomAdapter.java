@@ -83,7 +83,7 @@ public class CustomAdapter extends ArrayAdapter {
                 public void onClick(View view) {
                     if ((foodName.getText().toString()).equalsIgnoreCase("Takoyaki")) {
                         pos = 0;
-                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Tonkutsu Curry")) {
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Tonkatsu Curry")) {
                         pos = 1;
                     } else if ((foodName.getText().toString()).equalsIgnoreCase("3 Pieces Tuna")) {
                         pos = 2;

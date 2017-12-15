@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 public class MenuActivity extends AppCompatActivity {
 
-    static String[] food = {"Takoyaki", "Tonkutsu Curry", "3 Pieces Tuna",
+    static String[] food = {"Takoyaki", "Tonkatsu Curry", "3 Pieces Tuna",
             "5 Pieces Sushi", "Hamburg Rice", "Sukiyaki", "Shoyu Ramen"};
     static String[] description = {"Grill octopus, cabbage and batter shaped in ball, top with mayonnaise and fish flakes",
             "Fried pork loins, veggie and Japanese curry serve on rice",
@@ -38,7 +38,7 @@ public class MenuActivity extends AppCompatActivity {
 
         setTitle("Menu");
         ListAdapter myAdapter = new CustomAdapter(this, food, description, priceForEach, imgID, butPlus, butMinus, amount);
-        ListView myListView = (ListView) findViewById(R.id.listView);
+        ListView myListView = findViewById(R.id.listView);
         myListView.setAdapter(myAdapter);
         buttonCart = findViewById(R.id.buttonCart);
 

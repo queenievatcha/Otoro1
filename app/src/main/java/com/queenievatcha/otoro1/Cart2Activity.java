@@ -4,6 +4,7 @@ package com.queenievatcha.otoro1;
  * Created by inkz on 19/11/2017 AD.
  */
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -49,6 +50,13 @@ public class Cart2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_cart2);
         setTitle("BILLING ADDRESS");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(false); // disable the button
+            actionBar.setDisplayHomeAsUpEnabled(false); // remove the left caret
+            actionBar.setDisplayShowHomeEnabled(false); // remove the icon
+        }
 
         //setting up a confirm dialog box
         final AlertDialog.Builder adb = new AlertDialog.Builder(this);
