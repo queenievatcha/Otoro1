@@ -34,8 +34,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
-       // mMap.setMyLocationEnabled(true);
-
         LatLng siamDis = new LatLng(13.7487581, 100.5237954);
         mMap.addMarker(new MarkerOptions().position(siamDis).title("Siam Discovery").snippet("      4th floor"));
 
