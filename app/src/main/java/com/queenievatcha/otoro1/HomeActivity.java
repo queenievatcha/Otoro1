@@ -53,4 +53,8 @@ public class HomeActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
 }
