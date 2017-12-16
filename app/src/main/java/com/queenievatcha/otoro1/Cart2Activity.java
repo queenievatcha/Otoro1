@@ -121,6 +121,10 @@ public class Cart2Activity extends AppCompatActivity {
                     Toast.makeText(Cart2Activity.this, "Phone number is invalid", Toast.LENGTH_SHORT).show();
                 }
 
+                //name contains number
+                else if(!name.getText().toString().trim().matches("^[ A-Za-z]+$")){
+                    Toast.makeText(Cart2Activity.this, "Name must be only a-z, or A-Z.", Toast.LENGTH_SHORT).show();
+                }
 
                 // selected paypal
                 else if (paypal.isChecked())
@@ -186,7 +190,7 @@ public class Cart2Activity extends AppCompatActivity {
     }
 
 
-    public void goCheckout(){
+    public void goCheckout() {
         Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
         in.putExtra("name", name.getText().toString());
         in.putExtra("address", address.getText().toString());
