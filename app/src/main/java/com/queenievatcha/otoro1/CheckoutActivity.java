@@ -83,7 +83,6 @@ public class CheckoutActivity extends AppCompatActivity {
         foodList = CartActivity.foodListFinal;
         phoneNum = getIntent().getStringExtra("phone");
         price = CartActivity.realTotalPrice;
-
         date = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
         String VAT = CartActivity.vat;
         payMethod = Cart2Activity.payment;
