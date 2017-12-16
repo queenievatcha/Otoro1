@@ -1,6 +1,8 @@
 package com.queenievatcha.otoro1;
 
 import android.app.ActionBar;
+import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,8 +10,9 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.media.MediaScannerConnection;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -25,8 +28,8 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -71,7 +74,6 @@ public class CheckoutActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         ivReceipt = findViewById(R.id.ivReceipt);
         buttBack = findViewById(R.id.buttBack);
-
 
         // BELOW THIS IS MADNESS
 
@@ -175,6 +177,9 @@ public class CheckoutActivity extends AppCompatActivity {
                 addText("").
                 addText("ENJOY YOUR MEAL :)");
         ivReceipt.setImageBitmap(receipt.build());
+
+        autosave();
+
     }
 
 
@@ -199,6 +204,18 @@ public class CheckoutActivity extends AppCompatActivity {
 
 
     public void saveReceipt(View v) {
+        ivReceipt.buildDrawingCache();
+        Bitmap bmap = ivReceipt.getDrawingCache();
 
+        CapturePhotoUtils.insertImage(getContentResolver(), bmap, "Receipt", "This is Otoro receipt.");
     }
+
+    public void autosave() {
+        ivReceipt.setDrawingCacheEnabled(true);
+        Bitmap bm = ivReceipt.getDrawingCache();
+        CapturePhotoUtils.insertImage(getContentResolver(), bm, "Receipt(auto create)"
+                , "This is Otoro receipt (auto create).");
+    }
+
 }
+
