@@ -3,9 +3,6 @@ package com.queenievatcha.otoro1;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-/**
- * Created by daniel on 15/08/2016.
- */
 public class DrawLine implements IDrawItem {
     private Paint paint = new Paint();
     private int size;
