@@ -85,4 +85,15 @@ public class MenuActivity extends AppCompatActivity {
         if (totalPriceForEach[position] < 0) totalPriceForEach[position] = 0;
     }
 
+    public static void clear(){
+        totalOrder=0;
+        totalPrice=0;
+        for (int i = 0; i < amount.length; i++) {
+            amount[i]=0;
+        }
+        for (int i = 0; i < totalPriceForEach.length; i++) {
+            totalPriceForEach[i]=0;
+        }
+    }
+
 }

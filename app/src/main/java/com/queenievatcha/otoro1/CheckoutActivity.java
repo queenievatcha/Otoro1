@@ -221,6 +221,7 @@ public class CheckoutActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+        MenuActivity.clear();
     }
 
     @Override
@@ -228,6 +229,7 @@ public class CheckoutActivity extends AppCompatActivity {
         super.onBackPressed();
         startActivity(new Intent(CheckoutActivity.this, HomeActivity.class));
         finish();
+        MenuActivity.clear();
     }
 
     public void saveReceipt(View v) {
