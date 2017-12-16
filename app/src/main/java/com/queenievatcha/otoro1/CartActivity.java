@@ -56,41 +56,26 @@ public class CartActivity extends AppCompatActivity {
                 if (!foodListFinal.contains(foodList[i]))
                     addList(amountList[i], foodList[i], imgID[i], eachPriceF[i]);
             }
-
-        /*if (foodList != null) {
-            for (int i = 0; i < amountList.length; i++) {
-                if (amountList[i] != 0) {
-                    if (!foodListFinal.contains(foodList[i]))
-                        addList(amountList[i], foodList[i], imgID[i], eachPriceF[i]);
-                }
-                *//*else if (amountList[i] == 0 && !foodListFinal.isEmpty()) {
-                if (foodListFinal.contains(foodList[i])) {
-                    index = foodListFinal.indexOf(foodList[i]);
-                    removeList(amountList[index], foodList[index], imgID[index], eachPriceF[index]);
-                    }
-                } *//*
-            }
-        }*/
-
-            subTotalText = findViewById(R.id.subTotalText);
-            vatText = findViewById(R.id.vatText);
-            totalText = findViewById(R.id.totalText);
-
-            // show price
-            price = MenuActivity.totalPrice;
-            subTotalText.setText("฿ " + MenuActivity.totalPrice + "");
-            DecimalFormat df = new DecimalFormat("#.##");
-            vatText.setText("฿ " + df.format(getVAT()));
-            totalText.setText("฿ " + getTotalPrice());
-
-            vat = new DecimalFormat("#.##").format(getVAT());
-            realTotalPrice = Double.toString(price + getVAT());
-
-            //ListView
-            ListAdapter myAdapter = new CustomAdapterCart(CartActivity.this, foodListFinal, imgIDFinal, amountListFinal, eachPriceFinal);
-            listViewSummary = findViewById(R.id.listViewSummary);
-            listViewSummary.setAdapter(myAdapter);
         }
+
+        subTotalText = (TextView) findViewById(R.id.subTotalText);
+        vatText = (TextView) findViewById(R.id.vatText);
+        totalText = (TextView) findViewById(R.id.totalText);
+
+        // show price
+        price = MenuActivity.totalPrice;
+        subTotalText.setText("฿ " + MenuActivity.totalPrice + "");
+        DecimalFormat df = new DecimalFormat("#.##");
+        vatText.setText("฿ " + df.format(getVAT()));
+        totalText.setText("฿ " + getTotalPrice());
+
+        vat = new DecimalFormat("#.##").format(getVAT());
+        realTotalPrice = Double.toString(price + getVAT());
+
+        //ListView
+        ListAdapter myAdapter = new CustomAdapterCart(CartActivity.this, foodListFinal, imgIDFinal, amountListFinal, eachPriceFinal);
+        listViewSummary = (ListView) findViewById(R.id.listViewSummary);
+        listViewSummary.setAdapter(myAdapter);
     }
 
     public String getTotalPrice() {

@@ -134,27 +134,12 @@ public class Cart2Activity extends AppCompatActivity {
                     adb.setNegativeButton("Cancel", null);
                     adb.setPositiveButton("Yes", new AlertDialog.OnClickListener() {
                         public void onClick(DialogInterface dialog, int arg1) {
-                            Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
-                            in.putExtra("name", name.getText().toString());
-                            in.putExtra("address", address.getText().toString());
-                            in.putExtra("phone", phone.getText().toString());
-                            startActivity(in);
+                            goCheckout();
                         }
                     });
                     adb.show();
                 }
 
-                /*// selected paypal
-                else if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && paypal.isChecked())
-                    pay(v);
-
-                // selected cash
-                else if (!name.getText().toString().trim().equals("") && !address.getText().toString().trim().equals("") && cash.isChecked()) {
-                    Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
-                    in.putExtra("name", name.getText().toString());
-                    in.putExtra("address", address.getText().toString());
-                    startActivity(in);
-                }*/
             }
         });
     }
@@ -188,24 +173,24 @@ public class Cart2Activity extends AppCompatActivity {
                 if (confirm != null) {
                     String state = confirm.getProofOfPayment().getState();
                     if (state.equals("approved")) { // payment works
-                        Intent in = new Intent(this, CheckoutActivity.class);
-                        //noinspection ResultOfMethodCallIgnored
-                        in.putExtra("name", name.getText()).toString();
-                        in.putExtra("address", address.getText().toString());
-                        startActivity(in);
                         Toast.makeText(this, "Paid Successfully!!", Toast.LENGTH_LONG).show();
+                        goCheckout();
                     } else {
-                        Intent in = new Intent(this, Cart2Activity.class);
-                        startActivity(in);
                         Toast.makeText(this, "Payment Failed!!", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Intent in = new Intent(this, Cart2Activity.class);
-                    startActivity(in);
                     Toast.makeText(this, "Confirmation Failed!! (null)", Toast.LENGTH_LONG).show();
                 }
             }
         }
     }
 
+
+    public void goCheckout(){
+        Intent in = new Intent(getApplicationContext(), CheckoutActivity.class);
+        in.putExtra("name", name.getText().toString());
+        in.putExtra("address", address.getText().toString());
+        in.putExtra("phone", phone.getText().toString());
+        startActivity(in);
+    }
 }

@@ -39,7 +39,7 @@ public class CheckoutActivity extends AppCompatActivity {
     ArrayList<Integer> amount, priceForEach;
     ArrayList<String> foodList;
     Button buttBack;
-    static String name, price,phoneNum, address, address1, address2;
+    static String name, price, phoneNum, address, address1, address2;
     ImageView ivReceipt;
     String imagePath;
     Uri URI;
@@ -61,14 +61,12 @@ public class CheckoutActivity extends AppCompatActivity {
         amount = CartActivity.amountListFinal;
         priceForEach = CartActivity.eachPriceFinal;
         foodList = CartActivity.foodListFinal;
-
-        phoneNum=getIntent().getStringExtra("phone");
+        phoneNum = getIntent().getStringExtra("phone");
 
         price = CartActivity.realTotalPrice;
         String date = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
         String VAT = CartActivity.vat;
         String payMethod = Cart2Activity.payment;
-
 
         ButterKnife.bind(this);
         ivReceipt = findViewById(R.id.ivReceipt);
