@@ -10,9 +10,6 @@ import android.graphics.Typeface;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by daniel on 12/08/2016.
- */
 public class ReceiptBuilder {
     List<IDrawItem> listItens = new ArrayList<>();
     private int backgroundColor = Color.WHITE;

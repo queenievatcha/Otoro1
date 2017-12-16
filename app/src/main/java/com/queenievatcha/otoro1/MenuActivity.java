@@ -10,8 +10,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.Arrays;
-
 public class MenuActivity extends AppCompatActivity {
 
     static String[] food = {"Takoyaki", "Tonkatsu Curry", "3 Pieces Tuna",

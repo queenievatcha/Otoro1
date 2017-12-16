@@ -30,7 +30,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        mMap.getUiSettings().setZoomControlsEnabled(true);
 
         LatLng siamDis = new LatLng(13.7487581, 100.5237954);
         mMap.addMarker(new MarkerOptions().position(siamDis).title("Siam Discovery").snippet("4th Floor"));
