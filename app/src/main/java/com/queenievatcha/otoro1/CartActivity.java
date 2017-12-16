@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -45,27 +44,22 @@ public class CartActivity extends AppCompatActivity {
         //create price for each list
         int[] eachPriceF = MenuActivity.priceForEach;
 
-        /*
-        amountListFinal.clear();
-        foodListFinal.clear();
-        eachPriceFinal.clear();
-        foodListFinal.clear();
-        */
-
         // add components to array lists
-
         for (int i = 0; i < amountList.length; i++) {
             if (amountList[i] != 0) {
-                if (!foodListFinal.contains(foodList[i]))
+                if (!foodListFinal.contains(foodList[i])) {
                     addList(amountList[i], foodList[i], imgID[i], eachPriceF[i]);
+                } else if (foodListFinal.contains(foodList[i])) {
+                    amountListFinal.set(i,amountList[i]);
+                }
             } else if (amountList[i] == 0 && !foodListFinal.isEmpty()) {
                 if (foodListFinal.contains(foodList[i])) {
                     index = foodListFinal.indexOf(foodList[i]);
                     removeList(index);
                 }
             }
-        }
 
+        }
 
         subTotalText = (TextView) findViewById(R.id.subTotalText);
         vatText = (TextView) findViewById(R.id.vatText);
@@ -118,7 +112,6 @@ public class CartActivity extends AppCompatActivity {
         foodListFinal.remove(index);
         imgIDFinal.remove(index);
         eachPriceFinal.remove(index);
-
     }
 
 }
