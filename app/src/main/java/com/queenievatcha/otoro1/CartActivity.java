@@ -50,7 +50,8 @@ public class CartActivity extends AppCompatActivity {
                 if (!foodListFinal.contains(foodList[i])) {
                     addList(amountList[i], foodList[i], imgID[i], eachPriceF[i]);
                 } else if (foodListFinal.contains(foodList[i])) {
-                    amountListFinal.set(i,amountList[i]);
+                    amountListFinal.set(foodListFinal.indexOf(foodList[i]), amountList[i]);
+                    eachPriceFinal.set(foodListFinal.indexOf(foodList[i]), amountList[i] * eachPriceF[i]);
                 }
             } else if (amountList[i] == 0 && !foodListFinal.isEmpty()) {
                 if (foodListFinal.contains(foodList[i])) {
