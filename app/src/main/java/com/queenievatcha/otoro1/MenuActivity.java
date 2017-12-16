@@ -55,6 +55,7 @@ public class MenuActivity extends AppCompatActivity {
         }
         if (totalOrder != 0) {
             Intent in = new Intent(MenuActivity.this, CartActivity.class);
+            in.putExtra("amount",amount);
             startActivity(in);
         } else {
             Toast.makeText(this, "Please select your menu.", Toast.LENGTH_SHORT).show();

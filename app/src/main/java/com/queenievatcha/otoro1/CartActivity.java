@@ -25,6 +25,7 @@ public class CartActivity extends AppCompatActivity {
     static String vat, realTotalPrice;
     int index;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +45,12 @@ public class CartActivity extends AppCompatActivity {
         //create price for each list
         int[] eachPriceF = MenuActivity.priceForEach;
 
+        /*
         amountListFinal.clear();
         foodListFinal.clear();
         eachPriceFinal.clear();
         foodListFinal.clear();
+        */
 
         // add components to array lists
 
@@ -55,42 +58,33 @@ public class CartActivity extends AppCompatActivity {
             if (amountList[i] != 0) {
                 if (!foodListFinal.contains(foodList[i]))
                     addList(amountList[i], foodList[i], imgID[i], eachPriceF[i]);
-            }
-
-        /*if (foodList != null) {
-            for (int i = 0; i < amountList.length; i++) {
-                if (amountList[i] != 0) {
-                    if (!foodListFinal.contains(foodList[i]))
-                        addList(amountList[i], foodList[i], imgID[i], eachPriceF[i]);
-                }
-                *//*else if (amountList[i] == 0 && !foodListFinal.isEmpty()) {
+            } else if (amountList[i] == 0 && !foodListFinal.isEmpty()) {
                 if (foodListFinal.contains(foodList[i])) {
                     index = foodListFinal.indexOf(foodList[i]);
-                    removeList(amountList[index], foodList[index], imgID[index], eachPriceF[index]);
-                    }
-                } *//*
+                    removeList(index);
+                }
             }
-        }*/
-
-            subTotalText = findViewById(R.id.subTotalText);
-            vatText = findViewById(R.id.vatText);
-            totalText = findViewById(R.id.totalText);
-
-            // show price
-            price = MenuActivity.totalPrice;
-            subTotalText.setText("฿ " + MenuActivity.totalPrice + "");
-            DecimalFormat df = new DecimalFormat("#.##");
-            vatText.setText("฿ " + df.format(getVAT()));
-            totalText.setText("฿ " + getTotalPrice());
-
-            vat = new DecimalFormat("#.##").format(getVAT());
-            realTotalPrice = Double.toString(price + getVAT());
-
-            //ListView
-            ListAdapter myAdapter = new CustomAdapterCart(CartActivity.this, foodListFinal, imgIDFinal, amountListFinal, eachPriceFinal);
-            listViewSummary = findViewById(R.id.listViewSummary);
-            listViewSummary.setAdapter(myAdapter);
         }
+
+
+        subTotalText = (TextView) findViewById(R.id.subTotalText);
+        vatText = (TextView) findViewById(R.id.vatText);
+        totalText = (TextView) findViewById(R.id.totalText);
+
+        // show price
+        price = MenuActivity.totalPrice;
+        subTotalText.setText("฿ " + MenuActivity.totalPrice + "");
+        DecimalFormat df = new DecimalFormat("#.##");
+        vatText.setText("฿ " + df.format(getVAT()));
+        totalText.setText("฿ " + getTotalPrice());
+
+        vat = new DecimalFormat("#.##").format(getVAT());
+        realTotalPrice = Double.toString(price + getVAT());
+
+        //ListView
+        ListAdapter myAdapter = new CustomAdapterCart(CartActivity.this, foodListFinal, imgIDFinal, amountListFinal, eachPriceFinal);
+        listViewSummary = (ListView) findViewById(R.id.listViewSummary);
+        listViewSummary.setAdapter(myAdapter);
     }
 
     public String getTotalPrice() {
@@ -112,11 +106,6 @@ public class CartActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public static void addAmount(int position) {
-        int newAmount = (amountListFinal.get(position)) + 1;
-        amountListFinal.set(position, newAmount);
-    }
-
     public void addList(int amount, String foodName, int imgID, int eachPrice) {
         amountListFinal.add(amount);
         foodListFinal.add(foodName);
@@ -124,11 +113,11 @@ public class CartActivity extends AppCompatActivity {
         eachPriceFinal.add(eachPrice * amount);
     }
 
-    public void removeList(int amount, String foodName, int imgID, int eachPrice) {
-        amountListFinal.remove(amount);
-        foodListFinal.remove(foodName);
-        imgIDFinal.remove(imgID);
-        eachPriceFinal.remove(eachPrice);
+    public void removeList(int index) {
+        amountListFinal.remove(index);
+        foodListFinal.remove(index);
+        imgIDFinal.remove(index);
+        eachPriceFinal.remove(index);
 
     }
 

@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 /**
  * Created by daniel on 12/08/2016.
  */
+
 public class DrawText implements IDrawItem {
     private Paint paint = new Paint();
     private String text;
