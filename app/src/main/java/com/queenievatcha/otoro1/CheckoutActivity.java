@@ -102,8 +102,6 @@ public class CheckoutActivity extends AppCompatActivity {
             // No idea what to do here
         }
 
-        Bitmap barcode = BitmapFactory.decodeResource(this.getResources(), R.drawable.barcode);
-
         ReceiptBuilder receipt = new ReceiptBuilder(1200);
 
 
