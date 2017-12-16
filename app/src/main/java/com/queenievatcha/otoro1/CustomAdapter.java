@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -25,8 +26,7 @@ public class CustomAdapter extends ArrayAdapter {
     private Activity context;
     int pos;
 
-    CustomAdapter(@NonNull Activity context, String[] food, String[] description, int[] price
-            , int[] imgID, String[] butPlus, String[] butMinus, int[] amount) {
+    CustomAdapter(@NonNull Activity context, String[] food, String[] description, int[] imgID, String[] butPlus, String[] butMinus, int[] amount) {
         super(context, R.layout.custom_row, food);
         this.context = context;
         this.food = food;
@@ -83,7 +83,7 @@ public class CustomAdapter extends ArrayAdapter {
                 public void onClick(View view) {
                     if ((foodName.getText().toString()).equalsIgnoreCase("Takoyaki")) {
                         pos = 0;
-                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Tonkutsu Curry")) {
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Tonkatsu Curry")) {
                         pos = 1;
                     } else if ((foodName.getText().toString()).equalsIgnoreCase("3 Pieces Tuna")) {
                         pos = 2;
@@ -111,12 +111,6 @@ public class CustomAdapter extends ArrayAdapter {
             });
 
             foodButtonMinus = v.findViewById(R.id.buttonMinus);
-            //if user backs to home activity and comes back again
-            int totalTest = 0;
-            for (int i = 0; i < amount.length; i++) {
-                totalTest += amount[i];
-            }
-            if (totalTest < 1) foodButtonMinus.setEnabled(false);
 
             foodButtonMinus.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -124,7 +118,7 @@ public class CustomAdapter extends ArrayAdapter {
 
                     if ((foodName.getText().toString()).equalsIgnoreCase("Takoyaki")) {
                         pos = 0;
-                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Tonkutsu Curry")) {
+                    } else if ((foodName.getText().toString()).equalsIgnoreCase("Tonkatsu Curry")) {
                         pos = 1;
                     } else if ((foodName.getText().toString()).equalsIgnoreCase("3 Pieces Tuna")) {
                         pos = 2;

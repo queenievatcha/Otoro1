@@ -38,7 +38,7 @@ public class CustomAdapterCart extends ArrayAdapter {
 
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View r = convertView;
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if (r == null) {
             LayoutInflater layoutInflater = context.getLayoutInflater();
             r = layoutInflater.inflate(R.layout.custom_row2, null, true);
