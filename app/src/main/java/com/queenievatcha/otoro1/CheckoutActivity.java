@@ -85,22 +85,7 @@ public class CheckoutActivity extends AppCompatActivity {
         buttBack = findViewById(R.id.buttBack);
 
         // BELOW THIS IS MADNESS
-
-
-        // make address a multiple line
-
-       /*
-        int address1S = address.indexOf(" ", address.indexOf(" ") + 1);
-        address1 = address.substring(0, address1S + 1);
-        String address15 = address.substring(address1S);
-        int address2S = address15.indexOf(" ", address15.indexOf(" ") + 1);
-        address2 = address15.substring(1, address2S + 1);
-        */
-
-        Bitmap barcode = BitmapFactory.decodeResource(this.getResources(), R.drawable.barcode);
-
         ReceiptBuilder receipt = new ReceiptBuilder(1200);
-
 
         receipt.setMargin(10, 20).
                 setAlign(Paint.Align.CENTER).
