@@ -30,8 +30,13 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void goInfo(View v) {
-        Intent in = new Intent(HomeActivity.this, InfoActivity.class);
-        startActivity(in);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(HomeActivity.this);
+        dialog.setTitle("Developers");
+        dialog.setMessage("5931294521 Boonsita V." + '\n' +
+                "5931291621 Nithiphorn Y." + '\n' +
+                "5931292221 Nithis P." + '\n' +
+                "5931315021 Pattabhum K.");
+        dialog.show();
     }
 
     public void goMap(View v) {
@@ -39,10 +44,12 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(in);
     }
 
-    public void popUp (View v){
+    public void popUp(View v) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(HomeActivity.this);
         dialog.setTitle("Delivery Schedule");
-        dialog.setMessage("We ship your delicious meal 2 hours after the order is placed. The first delivery is at 11:00am every day.");
+        dialog.setMessage("We ship your delicious meal 2 hours after the order is placed.\n"+" \n"+
+                "The first delivery is at 11:00am every day."+'\n'
+                +"Please make your last order before 7:00pm");
         dialog.show();
     }
 

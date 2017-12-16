@@ -25,6 +25,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -33,6 +36,8 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 
@@ -42,10 +47,14 @@ public class CheckoutActivity extends AppCompatActivity {
     ArrayList<Integer> amount, priceForEach;
     ArrayList<String> foodList;
     Button buttBack;
-    static String name, price, phoneNum, address, address1, address2;
+    static String name, price, phoneNum, address, date, payMethod;
     ImageView ivReceipt;
     String imagePath;
     Uri URI;
+
+    //firebase database section
+    DatabaseReference databaseOrder;
+    ArrayList<Food> foodOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +69,16 @@ public class CheckoutActivity extends AppCompatActivity {
         // GET FOOD DATA
         // save these data to online database
         name = getIntent().getStringExtra("name"); // customer name
-        //address = getIntent().getStringExtra("address"); // customer address
+        address = getIntent().getStringExtra("address"); // customer address
         amount = CartActivity.amountListFinal;
         priceForEach = CartActivity.eachPriceFinal;
         foodList = CartActivity.foodListFinal;
         phoneNum = getIntent().getStringExtra("phone");
-
         price = CartActivity.realTotalPrice;
-        String date = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
+
+        date = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
         String VAT = CartActivity.vat;
-        String payMethod = Cart2Activity.payment;
+        payMethod = Cart2Activity.payment;
 
         ButterKnife.bind(this);
         ivReceipt = findViewById(R.id.ivReceipt);
@@ -180,12 +189,29 @@ public class CheckoutActivity extends AppCompatActivity {
 
         autosave();
 
+
+        //Firebase database section
+
+        databaseOrder = FirebaseDatabase.getInstance().getReference("Orders");
+        String id = databaseOrder.push().getKey();
+
+        Map<String, Food> menu = new HashMap<>();
+        int count = 1;
+        for (int i = 0; i < foodList.size(); i++) {
+                String c = ""+count;
+                menu.put(c,new Food(foodList.get(i),amount.get(i)));
+                count++;
+        }
+        Order order = new Order(id, date, name, address, phoneNum, payMethod, price, menu);
+        databaseOrder.child(id).setValue(order);
+        Toast.makeText(this, "Your order is sent.", Toast.LENGTH_LONG).show();
+
     }
 
 
     public void goHome(View v) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(CheckoutActivity.this);
-        dialog.setMessage("Thank you for purchasing").setPositiveButton("DONE", new DialogInterface.OnClickListener() {
+        dialog.setMessage("Thank you for purchasing.").setPositiveButton("DONE", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Intent in = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(in);
@@ -206,8 +232,8 @@ public class CheckoutActivity extends AppCompatActivity {
     public void saveReceipt(View v) {
         ivReceipt.buildDrawingCache();
         Bitmap bmap = ivReceipt.getDrawingCache();
-
         CapturePhotoUtils.insertImage(getContentResolver(), bmap, "Receipt", "This is Otoro receipt.");
+        Toast.makeText(this, "Receipt is saved.", Toast.LENGTH_LONG).show();
     }
 
     public void autosave() {
