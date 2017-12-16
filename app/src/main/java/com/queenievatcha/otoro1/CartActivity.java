@@ -59,7 +59,6 @@ public class CartActivity extends AppCompatActivity {
                     removeList(index);
                 }
             }
-
         }
 
         subTotalText = (TextView) findViewById(R.id.subTotalText);
