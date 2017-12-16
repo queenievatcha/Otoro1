@@ -57,7 +57,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         LatLng centralev= new LatLng(13.8036168,100.6119115);
         mMap.addMarker(new MarkerOptions().position(centralev).title("Central Festival Eastville").snippet("2nd Floor"));
         LatLng chaophraya = new LatLng(13.7741903,100.5008947);
-        mMap.addMarker(new MarkerOptions().position(chaophraya).title("Sri-Ayutthaya Road"));
+        mMap.addMarker(new MarkerOptions().position(chaophraya).title("Sri-Ayutthaya Rd."));
 
         CameraPosition bangkok = CameraPosition.builder().target(new LatLng(13.7245599, 100.4926818)).zoom(9).build();
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(bangkok));
