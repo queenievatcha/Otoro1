@@ -92,7 +92,6 @@ public class CheckoutActivity extends AppCompatActivity {
         ivReceipt = findViewById(R.id.ivReceipt);
         buttBack = findViewById(R.id.buttBack);
 
-
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkPermission()) {
                 //Permission granted already
@@ -103,7 +102,6 @@ public class CheckoutActivity extends AppCompatActivity {
             // Code for Below 23 API Oriented Device
             // No idea what to do here
         }
-
 
         Bitmap barcode = BitmapFactory.decodeResource(this.getResources(), R.drawable.barcode);
 
