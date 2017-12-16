@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -14,8 +15,12 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +41,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,11 +57,13 @@ public class CheckoutActivity extends AppCompatActivity {
     ImageView ivReceipt;
     String imagePath;
     Uri URI;
+    private static final int PERMISSION_REQUEST_CODE = 666;
 
     //firebase database section
     DatabaseReference databaseOrder;
     ArrayList<Food> foodOrder;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +83,6 @@ public class CheckoutActivity extends AppCompatActivity {
         foodList = CartActivity.foodListFinal;
         phoneNum = getIntent().getStringExtra("phone");
         price = CartActivity.realTotalPrice;
-
         date = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
         String VAT = CartActivity.vat;
         payMethod = Cart2Activity.payment;
@@ -84,8 +91,21 @@ public class CheckoutActivity extends AppCompatActivity {
         ivReceipt = findViewById(R.id.ivReceipt);
         buttBack = findViewById(R.id.buttBack);
 
-        // BELOW THIS IS MADNESS
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkPermission()) {
+                //Permission granted already
+            } else {
+                requestPermission();
+            }
+        } else {
+            // Code for Below 23 API Oriented Device
+            // No idea what to do here
+        }
+
+        Bitmap barcode = BitmapFactory.decodeResource(this.getResources(), R.drawable.barcode);
+
         ReceiptBuilder receipt = new ReceiptBuilder(1200);
+
 
         receipt.setMargin(10, 20).
                 setAlign(Paint.Align.CENTER).
@@ -183,9 +203,9 @@ public class CheckoutActivity extends AppCompatActivity {
         Map<String, Food> menu = new HashMap<>();
         int count = 1;
         for (int i = 0; i < foodList.size(); i++) {
-                String c = ""+count;
-                menu.put(c,new Food(foodList.get(i),amount.get(i)));
-                count++;
+            String c = "" + count;
+            menu.put(c, new Food(foodList.get(i), amount.get(i)));
+            count++;
         }
         Order order = new Order(id, date, name, address, phoneNum, payMethod, price, menu);
         databaseOrder.child(id).setValue(order);
@@ -205,7 +225,6 @@ public class CheckoutActivity extends AppCompatActivity {
         dialog.show();
     }
 
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -213,12 +232,17 @@ public class CheckoutActivity extends AppCompatActivity {
         finish();
     }
 
-
     public void saveReceipt(View v) {
         ivReceipt.buildDrawingCache();
         Bitmap bmap = ivReceipt.getDrawingCache();
-        CapturePhotoUtils.insertImage(getContentResolver(), bmap, "Receipt", "This is Otoro receipt.");
+        CapturePhotoUtils.insertImage(getContentResolver(), bmap, receiptName(), "This is Otoro receipt.");
         Toast.makeText(this, "Receipt is saved.", Toast.LENGTH_LONG).show();
+    }
+
+    private String receiptName() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        String timestamp = sdf.format(new Date());
+        return "OTORO_RECEIPT_" + timestamp + ".png";
     }
 
     public void autosave() {
@@ -226,6 +250,37 @@ public class CheckoutActivity extends AppCompatActivity {
         Bitmap bm = ivReceipt.getDrawingCache();
         CapturePhotoUtils.insertImage(getContentResolver(), bm, "Receipt(auto create)"
                 , "This is Otoro receipt (auto create).");
+    }
+
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(CheckoutActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void requestPermission() {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(CheckoutActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            Toast.makeText(CheckoutActivity.this, "External Storage permission is needed to save receipt.", Toast.LENGTH_SHORT).show();
+        } else {
+            ActivityCompat.requestPermissions(CheckoutActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.e("value", "Storage Permission Granted.");
+                } else {
+                    Log.e("value", "Storage Permission Denied.");
+                }
+                break;
+        }
     }
 
 }
