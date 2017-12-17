@@ -46,6 +46,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.7487581, 100.5237954), 10.0f));
+
         LatLng siamDis = new LatLng(13.7487581, 100.5237954);
         mMap.addMarker(new MarkerOptions().position(siamDis).title("Siam Discovery").snippet("4th Floor"));
         LatLng pattaya = new LatLng(12.934668, 100.8812342);
@@ -95,8 +97,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         public void onStatusChanged(String provider, int status
                 , Bundle extras) {
         }
+
         public void onProviderEnabled(String provider) {
         }
+
         public void onProviderDisabled(String provider) {
         }
     };
@@ -126,19 +130,19 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     , 5000, 10, listener);
             Location loc = lm.getLastKnownLocation(
                     LocationManager.NETWORK_PROVIDER);
-            if(loc != null) {
+            if (loc != null) {
                 lat = loc.getLatitude();
                 lng = loc.getLongitude();
             }
         }
 
-        if(isGPS) {
+        if (isGPS) {
             lm.requestLocationUpdates(LocationManager.GPS_PROVIDER
                     , 5000, 10, listener);
             Location loc = lm.getLastKnownLocation(
                     LocationManager.GPS_PROVIDER);
 
-            if(loc != null) {
+            if (loc != null) {
                 lat = loc.getLatitude();
                 lng = loc.getLongitude();
             }
