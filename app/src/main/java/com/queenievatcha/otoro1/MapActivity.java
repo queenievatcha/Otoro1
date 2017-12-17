@@ -95,10 +95,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         public void onStatusChanged(String provider, int status
                 , Bundle extras) {
         }
-
         public void onProviderEnabled(String provider) {
         }
-
         public void onProviderDisabled(String provider) {
         }
     };
@@ -145,10 +143,5 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 lng = loc.getLongitude();
             }
         }
-    }
-
-    public void onPause() {
-        super.onPause();
-        lm.removeUpdates(listener);
     }
 }
