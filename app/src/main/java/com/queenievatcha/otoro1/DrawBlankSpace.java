@@ -2,6 +2,7 @@ package com.queenievatcha.otoro1;
 
 import android.graphics.Canvas;
 
+
 public class DrawBlankSpace implements IDrawItem {
 
     private int blankSpace;

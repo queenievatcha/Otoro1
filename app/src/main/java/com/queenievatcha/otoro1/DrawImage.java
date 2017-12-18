@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+
 public class DrawImage implements IDrawItem {
     private Paint paint = new Paint();
     private Bitmap bitmap;

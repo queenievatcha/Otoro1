@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 
+
 public class DrawText implements IDrawItem {
     private Paint paint = new Paint();
     private String text;

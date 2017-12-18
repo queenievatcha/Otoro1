@@ -1,6 +1,5 @@
 package com.queenievatcha.otoro1;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 /**

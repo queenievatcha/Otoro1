@@ -10,11 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import static com.queenievatcha.otoro1.MenuActivity.priceForEach;
+
 
 public class CustomAdapter extends ArrayAdapter {
     private String[] food;

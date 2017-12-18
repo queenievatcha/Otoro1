@@ -1,9 +1,5 @@
 package com.queenievatcha.otoro1;
 
-/**
- * Created by inkz on 19/11/2017 AD.
- */
-
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +20,7 @@ import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 import java.math.BigDecimal;
+
 
 public class Cart2Activity extends AppCompatActivity {
 

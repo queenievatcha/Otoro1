@@ -1,6 +1,5 @@
 package com.queenievatcha.otoro1;
 
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
