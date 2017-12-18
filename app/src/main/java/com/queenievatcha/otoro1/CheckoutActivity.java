@@ -86,7 +86,6 @@ public class CheckoutActivity extends AppCompatActivity {
             }
         } else {
             // Code for Below 23 API Oriented Device
-            // No idea what to do here
         }
 
         ReceiptBuilder receipt = new ReceiptBuilder(1200);

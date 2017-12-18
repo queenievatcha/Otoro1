@@ -45,7 +45,6 @@
         <activity
             android:name=".MapActivity"
             android:parentActivityName=".HomeActivity" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBZmhqt4kk4gTb6kvBjxDXuuJztL6X7Hsk" />

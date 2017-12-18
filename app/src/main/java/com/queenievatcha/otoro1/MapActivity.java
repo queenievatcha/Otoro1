@@ -1,7 +1,10 @@
 package com.queenievatcha.otoro1;
 
+import android.*;
+import android.Manifest;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -21,6 +24,11 @@ import android.location.LocationManager;
 import com.google.android.gms.maps.model.Marker;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.util.Map;
 
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -29,6 +37,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     Marker mMarker;
     LocationManager lm;
     double lat, lng;
+    final static int PERMISSION_REQUEST_CODE = 696;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,16 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkPermission()) {
+                //Permission granted already
+            } else {
+                requestPermission();
+            }
+        } else {
+            // Code for Below 23 API Oriented Device
+        }
     }
 
     @Override
@@ -46,8 +65,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
-        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.7487581, 100.5237954), 10.0f));
-
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.7487581, 100.5237954), 10.0f));
 
         LatLng siamDis = new LatLng(13.7487581, 100.5237954);
         mMap.addMarker(new MarkerOptions().position(siamDis).title("Siam Discovery").snippet("4th Floor"));
@@ -147,6 +165,37 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 lat = loc.getLatitude();
                 lng = loc.getLongitude();
             }
+        }
+    }
+
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(MapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void requestPermission() {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(MapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+            Toast.makeText(MapActivity.this, "Permission is needed to use GPS.", Toast.LENGTH_SHORT).show();
+        } else {
+            ActivityCompat.requestPermissions(MapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.e("value", "Permission Granted.");
+                } else {
+                    Log.e("value", "Permission Denied.");
+                }
+                break;
         }
     }
 }
