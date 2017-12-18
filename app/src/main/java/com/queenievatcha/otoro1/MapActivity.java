@@ -48,6 +48,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.7487581, 100.5237954), 10.0f));
 
+
         LatLng siamDis = new LatLng(13.7487581, 100.5237954);
         mMap.addMarker(new MarkerOptions().position(siamDis).title("Siam Discovery").snippet("4th Floor"));
         LatLng pattaya = new LatLng(12.934668, 100.8812342);
